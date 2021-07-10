@@ -80,6 +80,7 @@ export default defineComponent({
 .screen {
   position: relative;
   padding-top: 55px;
+  margin-bottom: 200px;
 }
 
 .users,
