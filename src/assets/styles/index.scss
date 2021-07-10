@@ -2,4 +2,61 @@
 
 body {
   font-family: Rubik, sans-serif;
+  max-width: $xl;
+  color: $text-main;
+  margin: 0 auto;
+}
+
+h1 {
+  @include font-bold;
+
+  font-size: 126px;
+  line-height: 149px;
+}
+
+h2 {
+  @include font-medium;
+
+  font-size: 66px;
+  line-height: 99px;
+}
+
+h3 {
+  @include font-bold;
+
+  font-size: 40px;
+  line-height: 60px;
+}
+
+h4 {
+  @include font-medium;
+
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.p1 {
+  font-style: italic;
+}
+
+.p2 {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.a {
+  text-decoration: none;
+  color: $white;
+
+  &:hover {
+    color: $yellow;
+  }
+
+  &:active {
+    color: rgba($yellow, 0.5);
+  }
+}
+
+button {
+  cursor: pointer;
 }

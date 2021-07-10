@@ -1,0 +1,62 @@
+<template>
+  <div class="header">
+    <a
+      class="header-logo"
+      href="/"
+    >
+      МАРБЛС
+    </a>
+
+    <div>
+      <a
+        class="a"
+        href="#"
+      >
+        Задать вопрос
+      </a>
+
+      <button>ЗАКАЗАТЬ</button>
+    </div>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 165px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba($text-main, 0.5) 29.51%,
+      rgba($text-main, 0) 100%
+    );
+
+  &-logo {
+    font-weight: bold;
+    font-size: 31px;
+    line-height: 37px;
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+button {
+  background: $yellow;
+  border: none;
+  padding: 10px 11px;
+  line-height: 18.96px;
+  border-radius: 6px;
+  margin-left: 40px;
+
+  @include font-bold;
+
+  &:hover {
+    filter: drop-shadow(0 3px 26px rgba($yellow, 0.33));
+  }
+
+  &:active {
+    background: $yellow-dark;
+  }
+}
+</style>

@@ -1,11 +1,16 @@
 <template>
-  <h1>app</h1>
+  <app-header />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import AppHeader from './components/app/AppHeader.vue'
 
-export default defineComponent({})
+export default defineComponent({
+  components: {
+    AppHeader
+  }
+})
 </script>
 
 <style lang="scss">

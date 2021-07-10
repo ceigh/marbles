@@ -2,6 +2,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
 
+const stylesPath = './src/assets/styles'
+
 module.exports = {
   productionSourceMap: false,
 
@@ -10,7 +12,15 @@ module.exports = {
   },
 
   css: {
-    extract: false
+    extract: false,
+    loaderOptions: {
+      sass: {
+        additionalData: `
+@import '${stylesPath}/variables';
+@import '${stylesPath}/mixins';
+`
+      }
+    }
   },
 
   configureWebpack: {
@@ -20,7 +30,7 @@ module.exports = {
     plugins: [
       new HtmlWebpackPlugin({
         filename: 'index.html',
-        template: 'src/index.html',
+        template: 'public/index.html',
         inlineSource: '.(js|css)$'
       }),
       new HtmlWebpackInlineSourcePlugin(HtmlWebpackPlugin)
