@@ -8,17 +8,20 @@
   >
 
   <screen-1 />
+  <screen-2 />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import AppHeader from './components/app/AppHeader.vue'
 import Screen1 from './components/screen/Screen1.vue'
+import Screen2 from './components/screen/Screen2.vue'
 
 export default defineComponent({
   components: {
     AppHeader,
-    Screen1
+    Screen1,
+    Screen2
   },
 
   setup () {

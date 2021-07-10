@@ -1,11 +1,7 @@
 <template>
   <div class="screen">
     <h1>МАРБЛС</h1>
-    <h2>
-      Мировой хит настолок
-      <br>
-      сделанный в России
-    </h2>
+    <h2>Мировой хит настолок сделанный в России</h2>
 
     <img
       v-for="i in 2"
@@ -13,12 +9,12 @@
       class="part"
       :class="`part-${i}`"
       :src="`${assetsPath}img/part-${i}.png`"
-      :alt="`part ${i}`"
+      :alt="`часть ${i}`"
     >
     <img
       class="cards"
       :src="`${assetsPath}img/cards.png`"
-      alt="cards"
+      alt="карточки"
     >
   </div>
 </template>
@@ -43,6 +39,11 @@ export default defineComponent({
   min-height: 550px;
 }
 
+h2 {
+  max-width: 955px;
+  margin: 0 auto;
+}
+
 .part {
   z-index: -1;
   position: absolute;
@@ -50,7 +51,7 @@ export default defineComponent({
 
   &-1 {
     right: 0;
-    bottom: -50px;
+    bottom: -120px;
   }
 
   &-2 {
