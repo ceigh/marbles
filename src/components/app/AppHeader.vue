@@ -1,5 +1,8 @@
 <template>
-  <div class="header">
+  <div
+    class="header"
+    :class="{ 'header-white': scrolled }"
+  >
     <a
       class="header-logo"
       href="/"
@@ -20,11 +23,34 @@
   </div>
 </template>
 
+<script lang="ts">
+import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
+
+export default defineComponent({
+  setup () {
+    const scrolled = ref(false)
+
+    function handleScroll (): void {
+      scrolled.value = window.scrollY > 150
+    }
+    onMounted(() => {
+      window.addEventListener('scroll', handleScroll)
+    })
+    onUnmounted(() => {
+      window.removeEventListener('scroll', handleScroll)
+    })
+
+    return {
+      scrolled
+    }
+  }
+})
+</script>
+
 <style lang="scss" scoped>
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -37,13 +63,8 @@
     );
   color: #fff;
 
-  &-logo {
-    color: inherit;
-    font-weight: bold;
-    font-size: 31px;
-    line-height: 37px;
-    text-decoration: none;
-  }
+  @include max-width;
+  @include transition;
 
   &-black {
     background: $text-main;
@@ -52,6 +73,14 @@
   &-white {
     background: #fff;
     color: $text-main;
+  }
+
+  &-logo {
+    color: inherit;
+    font-weight: bold;
+    font-size: 31px;
+    line-height: 37px;
+    text-decoration: none;
   }
 }
 

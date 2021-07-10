@@ -2,11 +2,11 @@
 
 body {
   font-family: Rubik, sans-serif;
-  max-width: $xl;
   background: $white;
   color: $text-main;
-  margin: 0 auto;
   position: relative;
+
+  @include max-width;
 }
 
 img {
