@@ -31,13 +31,23 @@
       rgba($text-main, 0.5) 29.51%,
       rgba($text-main, 0) 100%
     );
+  color: #fff;
 
   &-logo {
+    color: inherit;
     font-weight: bold;
     font-size: 31px;
     line-height: 37px;
-    color: #fff;
     text-decoration: none;
+  }
+
+  &-black {
+    background: $text-main;
+  }
+
+  &-white {
+    background: #fff;
+    color: $text-main;
   }
 }
 
@@ -50,6 +60,7 @@ button {
   margin-left: 40px;
 
   @include font-bold;
+  @include transition;
 
   &:hover {
     filter: drop-shadow(0 3px 26px rgba($yellow, 0.33));

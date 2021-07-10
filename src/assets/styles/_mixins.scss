@@ -6,3 +6,8 @@
 @mixin font-medium {
   font-weight: 500;
 }
+
+/* transition */
+@mixin transition {
+  transition: 0.2s ease-out;
+}
