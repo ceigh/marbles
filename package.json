@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build && del dist/js",
     "lint": "yarn lint:es && yarn lint:style",
     "lint:es": "vue-cli-service lint",
     "lint:style": "vue-cli-service lint:style",
@@ -28,6 +28,7 @@
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/eslint-config-standard": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
+    "del-cli": "^4.0.0",
     "eslint": "^7.30.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
