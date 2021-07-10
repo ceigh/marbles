@@ -1,7 +1,7 @@
 <template>
   <div
     class="header"
-    :class="{ 'header-white': scrolled }"
+    :class="{ 'header-black': scrolled }"
   >
     <a
       class="header-logo"

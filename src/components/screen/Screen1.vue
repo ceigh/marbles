@@ -51,7 +51,7 @@ h2 {
 
   &-1 {
     right: 0;
-    bottom: -120px;
+    bottom: -30px;
   }
 
   &-2 {
@@ -61,6 +61,8 @@ h2 {
 }
 
 .cards {
-  margin-left: 50px;
+  position: absolute;
+  left: 30px;
+  bottom: 70px;
 }
 </style>
