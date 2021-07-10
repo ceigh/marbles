@@ -1,19 +1,24 @@
 <template>
   <app-header />
+
   <img
     class="photo"
     :src="`${assetsPath}img/photo.jpeg`"
     alt="фото"
   >
+
+  <screen-1 />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import AppHeader from './components/app/AppHeader.vue'
+import Screen1 from './components/screen/Screen1.vue'
 
 export default defineComponent({
   components: {
-    AppHeader
+    AppHeader,
+    Screen1
   },
 
   setup () {
