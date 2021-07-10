@@ -5,6 +5,10 @@ const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin
 const stylesPath = './src/assets/styles'
 
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/marbles/'
+    : '/',
+
   productionSourceMap: false,
 
   pluginOptions: {

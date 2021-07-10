@@ -5,6 +5,12 @@ body {
   max-width: $xl;
   color: $text-main;
   margin: 0 auto;
+  position: relative;
+}
+
+img {
+  user-select: none;
+  pointer-events: none;
 }
 
 h1 {
