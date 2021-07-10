@@ -62,6 +62,7 @@ export default defineComponent({
       rgba($text-main, 0) 100%
     );
   color: #fff;
+  z-index: 1;
 
   @include max-width;
   @include transition;
@@ -76,6 +77,7 @@ export default defineComponent({
   }
 
   &-logo {
+    user-select: none;
     color: inherit;
     font-weight: bold;
     font-size: 31px;
