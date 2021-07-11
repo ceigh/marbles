@@ -1,7 +1,6 @@
 <template>
   <div
     class="header"
-    :class="{ 'header-black': scrolled }"
   >
     <a
       class="header-logo"
@@ -24,9 +23,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
+// import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
+  /*
   setup () {
     const scrolled = ref(false)
 
@@ -44,12 +45,14 @@ export default defineComponent({
       scrolled
     }
   }
+  */
 })
 </script>
 
 <style lang="scss" scoped>
 .header {
-  position: fixed;
+  // position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   display: flex;
