@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="screen">
     <div class="benefits">
       <div class="heading">
         <img
@@ -30,6 +30,15 @@
           <p>{{ card.item }}</p>
         </div>
       </div>
+    </div>
+
+    <div class="cards">
+      <img
+        v-for="i in 6"
+        :key="i"
+        :src="`${assetsPath}img/card-${i % 2 ? 'front' : 'back'}.svg`"
+        alt="карта"
+      >
     </div>
   </div>
 </template>
@@ -101,6 +110,13 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.screen {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 96px;
+  padding-bottom: 350px;
+}
+
 .benefits {
   padding: 100px 0 0 165px;
 
@@ -157,5 +173,12 @@ export default defineComponent({
   img {
     margin-right: 41px;
   }
+}
+
+.cards {
+  display: flex;
+  position: absolute;
+  left: -45px;
+  bottom: 0;
 }
 </style>
