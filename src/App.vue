@@ -10,6 +10,7 @@
   <screen-1 />
   <screen-2 />
   <screen-3 />
+  <screen-4 />
 </template>
 
 <script lang="ts">
@@ -18,13 +19,15 @@ import AppHeader from './components/app/AppHeader.vue'
 import Screen1 from './components/screen/Screen1.vue'
 import Screen2 from './components/screen/Screen2.vue'
 import Screen3 from './components/screen/Screen3.vue'
+import Screen4 from './components/screen/Screen4.vue'
 
 export default defineComponent({
   components: {
     AppHeader,
     Screen1,
     Screen2,
-    Screen3
+    Screen3,
+    Screen4
   },
 
   setup () {

@@ -148,6 +148,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .screen {
   position: relative;
+  margin-bottom: 220px;
 }
 
 .shape {
@@ -197,6 +198,7 @@ export default defineComponent({
 
       width: $size;
       height: $size;
+      object-fit: cover;
       border-radius: 100%;
       margin-bottom: 20px;
     }
