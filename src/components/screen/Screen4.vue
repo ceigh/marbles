@@ -49,6 +49,10 @@
           </div>
         </div>
       </div>
+
+      <button class="btn btn-buy">
+        КУПИТЬ
+      </button>
     </div>
   </div>
 </template>
@@ -192,25 +196,26 @@ export default defineComponent({
 }
 
 .btn {
+  $corner: 11px;
+
   height: 67px;
+  max-width: 380px;
+  font-size: 20px;
+  line-height: 30px;
+  user-select: none;
+  border-radius: $corner;
+
+  @include font-bold;
 
   &-quantity {
-    $corner: 11px;
     $border: 1px solid #777;
 
     display: flex;
     justify-content: space-between;
-    max-width: 380px;
     border: $border;
     background: rgba($text-main, 0.04);
     backdrop-filter: blur(20px);
-    border-radius: $corner;
-    font-size: 20px;
-    line-height: 30px;
-    user-select: none;
     margin-bottom: 20px;
-
-    @include font-bold;
 
     &-quantity {
       display: flex;
@@ -248,6 +253,12 @@ export default defineComponent({
         }
       }
     }
+  }
+
+  &-buy {
+    width: 100%;
+
+    @include yellow-btn;
   }
 }
 </style>

@@ -90,22 +90,11 @@ export default defineComponent({
 }
 
 button {
-  background: $yellow;
-  border: none;
   padding: 10px 11px;
   line-height: 18.96px;
   border-radius: 6px;
   margin-left: 40px;
 
-  @include font-bold;
-  @include transition;
-
-  &:hover {
-    filter: drop-shadow(0 3px 26px rgba($yellow, 0.33));
-  }
-
-  &:active {
-    background: $yellow-dark;
-  }
+  @include yellow-btn;
 }
 </style>

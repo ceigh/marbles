@@ -16,3 +16,19 @@
   max-width: $xl;
   margin: 0 auto;
 }
+
+@mixin yellow-btn {
+  background: $yellow;
+  border: none;
+
+  @include font-bold;
+  @include transition;
+
+  &:hover {
+    filter: drop-shadow(0 3px 26px rgba($yellow, 0.33));
+  }
+
+  &:active {
+    background: $yellow-dark;
+  }
+}
