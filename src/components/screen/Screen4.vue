@@ -74,10 +74,9 @@ export default defineComponent({
     const assetsPath = `${process.env.VUE_APP_ROOT}${process.env.BASE_URL}`
     const images = [
       `${assetsPath}img/photo.jpeg`,
-      'https://picsum.photos/400/300',
-      'https://picsum.photos/401/300',
-      'https://picsum.photos/402/300',
-      'https://picsum.photos/403/300'
+      'https://picsum.photos/600/800',
+      'https://picsum.photos/601/800',
+      'https://picsum.photos/602/800'
     ]
     const currentImg = ref(0)
 
@@ -97,7 +96,8 @@ export default defineComponent({
     })
 
     const costPerItem = 3900
-    const costTotal = computed(() => costPerItem * quantity.value)
+    const costTotal = computed(() =>
+      (costPerItem * quantity.value).toLocaleString('ru'))
 
     function changeQuantity (inc: 1 | -1): void {
       const newQuantity = quantity.value + inc
@@ -120,7 +120,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .screen {
-  position: relative;
   padding: 31px 77px 77px;
   display: grid;
   grid-template-columns: 1fr 1fr;
