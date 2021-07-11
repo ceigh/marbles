@@ -53,6 +53,15 @@
       <button class="btn btn-buy">
         КУПИТЬ
       </button>
+
+      <div class="btn-other">
+        <button class="btn btn-ozone">
+          Купить на OZON
+        </button>
+        <button class="btn btn-wb">
+          Купить на WB
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -144,6 +153,8 @@ export default defineComponent({
   background: rgba($lightgray, 30%);
   cursor: pointer;
 
+  @include transition;
+
   &:not(:last-child) {
     margin-right: 10px;
   }
@@ -197,9 +208,11 @@ export default defineComponent({
 
 .btn {
   $corner: 11px;
+  $spacing: 20px;
+  $mw: 380px;
 
   height: 67px;
-  max-width: 380px;
+  max-width: $mw;
   font-size: 20px;
   line-height: 30px;
   user-select: none;
@@ -215,7 +228,7 @@ export default defineComponent({
     border: $border;
     background: rgba($text-main, 0.04);
     backdrop-filter: blur(20px);
-    margin-bottom: 20px;
+    margin-bottom: $spacing;
 
     &-quantity {
       display: flex;
@@ -257,8 +270,54 @@ export default defineComponent({
 
   &-buy {
     width: 100%;
+    margin-bottom: $spacing;
 
     @include yellow-btn;
+  }
+
+  &-other {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing;
+    max-width: $mw;
+
+    button {
+      border: none;
+      max-width: unset;
+      font-size: 18px;
+      line-height: 21px;
+      color: $white;
+
+      @include transition;
+    }
+  }
+
+  &-ozone {
+    $blue-dark: #0047ac;
+
+    background: #0069ff;
+
+    &:hover {
+      background: $blue-dark;
+    }
+
+    &:active {
+      background: rgba($blue-dark, 0.6);
+    }
+  }
+
+  &-wb {
+    $purple-dark: #6f0e6b;
+
+    background: #981393;
+
+    &:hover {
+      background: $purple-dark;
+    }
+
+    &:active {
+      background: rgba($purple-dark, 0.6);
+    }
   }
 }
 </style>
