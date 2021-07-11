@@ -111,7 +111,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .screen {
-  overflow: hidden;
   position: relative;
   margin-bottom: 96px;
   padding-bottom: 350px;
@@ -122,7 +121,6 @@ export default defineComponent({
 
   &-cards {
     display: flex;
-    overflow: hidden;
     margin-bottom: 117px;
 
     &-card {

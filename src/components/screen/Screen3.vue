@@ -260,7 +260,6 @@ export default defineComponent({
     }
 
     &-2 {
-      overflow-x: hidden;
       align-items: flex-start;
     }
   }
