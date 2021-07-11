@@ -28,19 +28,33 @@
         Сделана в России, играют во всем мире
       </p>
       <p class="cost">
-        3900 ₽
+        {{ costTotal }} ₽
       </p>
       <p class="delivery">
         <span class="delivery-highlight">Бесплатная доставка</span>
         <br>
         до пункта выдачи СДЭК или Боксберри
       </p>
+
+      <div class="btn btn-quantity">
+        <div class="btn-quantity-quantity">
+          {{ quantity }} {{ quantityStr }}
+        </div>
+        <div class="btn-quantity-actions">
+          <div @click="changeQuantity(+1)">
+            +
+          </div>
+          <div @click="changeQuantity(-1)">
+            -
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, computed } from 'vue'
 
 export default defineComponent({
   setup () {
@@ -54,10 +68,38 @@ export default defineComponent({
     ]
     const currentImg = ref(0)
 
+    const quantity = ref(1)
+    const quantityStr = computed(() => {
+      const q = quantity.value
+      const qStr = String(q)
+      const last = Number(qStr[qStr.length - 1])
+
+      let end = ''
+      if (last === 1) end = 'а'
+      if (last > 1) end = 'ы'
+      if (last > 4) end = ''
+      if (q > 10 && q < 20) end = ''
+
+      return `игр${end}`
+    })
+
+    const costPerItem = 3900
+    const costTotal = computed(() => costPerItem * quantity.value)
+
+    function changeQuantity (inc: 1 | -1): void {
+      const newQuantity = quantity.value + inc
+      quantity.value = newQuantity < 1 ? 1 : newQuantity
+    }
+
     return {
       assetsPath,
       images,
-      currentImg
+      currentImg,
+
+      quantity,
+      quantityStr,
+      costTotal,
+      changeQuantity
     }
   }
 })
@@ -146,6 +188,66 @@ export default defineComponent({
     color: $yellow;
 
     @include font-bold;
+  }
+}
+
+.btn {
+  height: 67px;
+
+  &-quantity {
+    $corner: 11px;
+    $border: 1px solid #777;
+
+    display: flex;
+    justify-content: space-between;
+    max-width: 380px;
+    border: $border;
+    background: rgba($text-main, 0.04);
+    backdrop-filter: blur(20px);
+    border-radius: $corner;
+    font-size: 20px;
+    line-height: 30px;
+    user-select: none;
+    margin-bottom: 20px;
+
+    @include font-bold;
+
+    &-quantity {
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-actions {
+      border-left: $border;
+      width: 61px;
+
+      div {
+        text-align: center;
+        cursor: pointer;
+        height: 50%;
+
+        @include transition;
+
+        &:hover {
+          background: $yellow;
+        }
+
+        &:active {
+          background: $yellow-dark;
+        }
+
+        &:first-child {
+          border-bottom: $border;
+          border-top-right-radius: $corner;
+        }
+
+        &:last-child {
+          border-bottom-right-radius: $corner;
+        }
+      }
+    }
   }
 }
 </style>
