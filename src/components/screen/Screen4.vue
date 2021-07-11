@@ -19,6 +19,23 @@
         />
       </div>
     </div>
+
+    <div class="col-2">
+      <p class="heading">
+        Настольная игра МАРБЛС
+      </p>
+      <p class="desc">
+        Сделана в России, играют во всем мире
+      </p>
+      <p class="cost">
+        3900 ₽
+      </p>
+      <p class="delivery">
+        <span class="delivery-highlight">Бесплатная доставка</span>
+        <br>
+        до пункта выдачи СДЭК или Боксберри
+      </p>
+    </div>
   </div>
 </template>
 
@@ -30,10 +47,10 @@ export default defineComponent({
     const assetsPath = `${process.env.VUE_APP_ROOT}${process.env.BASE_URL}`
     const images = [
       `${assetsPath}img/photo.jpeg`,
-      'https://picsum.photos/400/700',
-      'https://picsum.photos/500/700',
-      'https://picsum.photos/600/700',
-      'https://picsum.photos/700/700'
+      'https://picsum.photos/400/300',
+      'https://picsum.photos/401/300',
+      'https://picsum.photos/402/300',
+      'https://picsum.photos/403/300'
     ]
     const currentImg = ref(0)
 
@@ -52,6 +69,7 @@ export default defineComponent({
   padding: 31px 77px 77px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 93px;
 }
 
 .col {
@@ -64,6 +82,10 @@ export default defineComponent({
 
       @include transition;
     }
+  }
+
+  &-2 {
+    color: $white;
   }
 }
 
@@ -88,6 +110,42 @@ export default defineComponent({
     display: flex;
     justify-content: flex-end;
     margin-top: 30px;
+  }
+}
+
+.heading {
+  font-size: 52px;
+  line-height: 78px;
+  color: $yellow;
+
+  @include font-bold;
+}
+
+.desc {
+  font-size: 27px;
+  line-height: 40px;
+  max-width: 380px;
+  margin-bottom: 50px;
+
+  @include font-medium;
+}
+
+.cost {
+  font-size: 60px;
+  line-height: 90px;
+
+  @include font-bold;
+}
+
+.delivery {
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 50px;
+
+  &-highlight {
+    color: $yellow;
+
+    @include font-bold;
   }
 }
 </style>
