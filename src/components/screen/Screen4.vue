@@ -10,7 +10,7 @@
       />
 
       <div class="dots">
-        <div
+        <button
           v-for="i in images.length"
           :key="i"
           class="dot"
@@ -148,9 +148,9 @@ export default defineComponent({
 
   width: $size;
   height: $size;
+  border: none;
   border-radius: 100%;
   background: rgba($lightgray, 30%);
-  cursor: pointer;
 
   @include transition;
 
