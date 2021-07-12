@@ -11,7 +11,7 @@
         <p class="subtext">
           Подпишитесь, чтобы узнать об этом:
         </p>
-        <input placeholder="Ваш Email">
+        <app-input placeholder="Ваш Email" />
         <button>Подписаться</button>
       </form>
     </div>
@@ -20,8 +20,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import AppInput from '../app/AppInput.vue'
 
 export default defineComponent({
+  components: { AppInput },
+
   setup () {
     const assetsPath = `${process.env.VUE_APP_ROOT}${process.env.BASE_URL}`
 
