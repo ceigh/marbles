@@ -3,6 +3,7 @@
     <div class="col-1">
       <form
         :style="`--bg: url('${assetsPath}img/noise.png')`"
+        @submit.prevent="onSubmit"
       >
         <h4>
           Скоро мы запустим игру в онлайне, чтобы вы смогли играть
@@ -13,7 +14,12 @@
           Подпишитесь, чтобы узнать об этом:
         </p>
 
-        <app-input placeholder="Ваш Email" />
+        <app-input
+          v-model="email"
+          placeholder="Ваш Email"
+          type="email"
+          required
+        />
 
         <button type="submit">
           Подписаться
@@ -24,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import AppInput from '../app/AppInput.vue'
 
 export default defineComponent({
@@ -32,9 +38,17 @@ export default defineComponent({
 
   setup () {
     const assetsPath = `${process.env.VUE_APP_ROOT}${process.env.BASE_URL}`
+    const email = ref('')
+
+    function onSubmit (): void {
+      console.log(email.value)
+    }
 
     return {
-      assetsPath
+      assetsPath,
+      email,
+
+      onSubmit
     }
   }
 })

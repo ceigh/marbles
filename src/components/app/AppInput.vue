@@ -1,6 +1,34 @@
 <template>
-  <input v-bind="$attrs">
+  <input
+    v-bind="$attrs"
+    @input="onInput"
+  >
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  props: {
+    modelValue: {
+      type: String,
+      default: ''
+    }
+  },
+
+  emits: ['update:modelValue'],
+
+  setup (_, { emit }) {
+    function onInput (e: InputEvent): void {
+      emit('update:modelValue', (e.target as HTMLInputElement).value)
+    }
+
+    return {
+      onInput
+    }
+  }
+})
+</script>
 
 <style lang="scss" scoped>
 input {
