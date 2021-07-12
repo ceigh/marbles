@@ -8,11 +8,16 @@
           Скоро мы запустим игру в онлайне, чтобы вы смогли играть
           и доигрывать начатые в оффлайне партии
         </h4>
+
         <p class="subtext">
           Подпишитесь, чтобы узнать об этом:
         </p>
+
         <app-input placeholder="Ваш Email" />
-        <button>Подписаться</button>
+
+        <button type="submit">
+          Подписаться
+        </button>
       </form>
     </div>
   </div>
@@ -80,6 +85,28 @@ form {
 
   .subtext {
     margin-bottom: 32px;
+  }
+
+  button {
+    margin-top: 10px;
+    height: 75px;
+    width: 349px;
+    padding: 20px 120px;
+    background: $blue;
+    border: none;
+    color: $white;
+    border-radius: 11px;
+
+    @include font-bold;
+    @include transition;
+
+    &:hover {
+      box-shadow: 0 3px 26px rgba($blue, 0.33);
+    }
+
+    &:active {
+      background: #003a75;
+    }
   }
 }
 </style>

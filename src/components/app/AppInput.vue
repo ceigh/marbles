@@ -25,8 +25,6 @@ input {
 
   &:focus,
   &:focus-visible { /* stylelint-disable-line selector-pseudo-class-no-unknown */
-    $blue: #0054a9;
-
     color: $blue;
     border-color: $blue;
 
