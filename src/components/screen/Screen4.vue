@@ -41,12 +41,12 @@
           {{ quantity }} {{ quantityStr }}
         </div>
         <div class="btn-quantity-actions">
-          <div @click="changeQuantity(+1)">
+          <button @click="changeQuantity(+1)">
             +
-          </div>
-          <div @click="changeQuantity(-1)">
+          </button>
+          <button @click="changeQuantity(-1)">
             -
-          </div>
+          </button>
         </div>
       </div>
 
@@ -219,6 +219,23 @@ export default defineComponent({
 
   @include font-bold;
 
+  &-other {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing;
+    max-width: $mw;
+
+    button {
+      border: none;
+      max-width: unset;
+      font-size: 18px;
+      line-height: 21px;
+      color: $white;
+
+      @include transition;
+    }
+  }
+
   &-quantity {
     $border: 1px solid #777;
 
@@ -240,10 +257,14 @@ export default defineComponent({
       border-left: $border;
       width: 61px;
 
-      div {
+      button {
+        display: block;
         text-align: center;
-        cursor: pointer;
+        width: 100%;
         height: 50%;
+        border: none;
+        background: transparent;
+        color: inherit;
 
         @include transition;
 
@@ -272,23 +293,6 @@ export default defineComponent({
     margin-bottom: $spacing;
 
     @include yellow-btn;
-  }
-
-  &-other {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: $spacing;
-    max-width: $mw;
-
-    button {
-      border: none;
-      max-width: unset;
-      font-size: 18px;
-      line-height: 21px;
-      color: $white;
-
-      @include transition;
-    }
   }
 
   &-ozone {
