@@ -26,6 +26,35 @@
         </button>
       </form>
     </div>
+
+    <div class="col-2">
+      <div class="cost">
+        <img
+          :src="`${assetsPath}img/gift.svg`"
+          alt="подарок"
+        >
+        <p>750 ₽ + 750 ₽</p>
+      </div>
+
+      <h3>Зовите друзей!</h3>
+      <p class="desc">
+        После покупки вашими друзьями игры МАРБЛС мы вернем им 750 рублей.
+        Но и вы тоже получите 750 рублей удобным для вас способом
+      </p>
+
+      <p class="how">
+        КАК ПОЛУЧИТЬ?
+      </p>
+
+      <ol>
+        <li
+          v-for="(step, i) in steps"
+          :key="i"
+        >
+          {{ step }}
+        </li>
+      </ol>
+    </div>
   </div>
 </template>
 
@@ -41,12 +70,20 @@ export default defineComponent({
     const email = ref('')
 
     function onSubmit (): void {
-      console.log(email.value)
+      alert(email.value)
     }
+
+    const steps = [
+      'Купить игру МАРБЛС',
+      'Порекомендовать игру друзьям',
+      'Друг должен назвать ваш номер телефона, после оформления заказа',
+      'Получить по 750 рублей'
+    ]
 
     return {
       assetsPath,
       email,
+      steps,
 
       onSubmit
     }
@@ -57,14 +94,85 @@ export default defineComponent({
 <style lang="scss" scoped>
 .screen {
   background: linear-gradient(149.32deg, $yellow 31.34%, #fada08 87.62%);
-  padding: 103px 0 137px 117px;
+  padding: 0 0 137px 117px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 484px auto;
+  gap: 148px;
+}
+
+.col {
+  &-1 {
+    padding-top: 189px;
+  }
+
+  &-2 {
+    padding-top: 105px;
+
+    .cost {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 60px;
+
+      img {
+        $size: 82px;
+
+        width: $size;
+        height: $size;
+      }
+
+      p {
+        font-size: 60px;
+        line-height: 71px;
+        margin-top: 32px;
+
+        @include font-bold;
+      }
+    }
+
+    .desc {
+      max-width: 500px;
+      margin-top: 10px;
+    }
+
+    .how {
+      margin: 30px 0;
+      letter-spacing: 0.11em;
+    }
+
+    ol {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: li;
+
+      li {
+        counter-increment: li;
+
+        &:not(:last-child) {
+          margin-bottom: 12px;
+        }
+
+        &::before {
+          $size: 22px;
+
+          content: counter(li);
+          background: $white;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: $size;
+          height: $size;
+          border-radius: 100%;
+          margin-right: 8px;
+        }
+      }
+    }
+  }
 }
 
 form {
   border-radius: 35px;
-  max-width: 484px;
   padding: 82px 33px 80px 43px;
   position: relative;
   z-index: 1;
