@@ -3,7 +3,19 @@
     class="screen"
     :style="{ background: `url('${assetsPath}img/pattern.svg')`}"
   >
-    <div class="col-1" />
+    <div class="col-1">
+      <div class="circle" />
+      <img
+        class="box"
+        :src="`${assetsPath}img/box.svg`"
+        alt="коробка"
+      >
+      <img
+        class="cards"
+        :src="`${assetsPath}img/cards.svg`"
+        alt="карты"
+      >
+    </div>
 
     <div class="col-2">
       <app-buy />
@@ -31,13 +43,44 @@ export default defineComponent({
 <style lang="scss" scoped>
 .screen {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 0 0 93px 42px;
+  grid-template-columns: auto 1fr;
+  gap: 31px;
+  padding-bottom: 160px;
+  background-size: 1800px !important;
+  background-position: -30px -20px !important;
 }
 
 .col {
   &-1 {
-    // padding-top: 189px;
+    position: relative;
+    padding: 65px 0 0 188px;
+
+    .circle {
+      $size: 509px;
+
+      width: $size;
+      height: $size;
+      border-radius: 100%;
+      border: 6px solid $yellow;
+      filter:
+        drop-shadow(0 0 104px $yellow)
+        drop-shadow(0 0 52px rgba($yellow, 0.4))
+        drop-shadow(0 0 26px rgba($yellow, 0.25));
+      position: absolute;
+      left: 142px;
+      top: 65px;
+    }
+
+    .box {
+      position: relative;
+      width: 596px;
+    }
+
+    .cards {
+      position: absolute;
+      left: 211px;
+      top: 299px;
+    }
   }
 
   &-2 {
