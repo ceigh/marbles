@@ -66,7 +66,7 @@ export default defineComponent({
   components: { AppInput },
 
   setup () {
-    const assetsPath = `${process.env.VUE_APP_ROOT}${process.env.BASE_URL}`
+    const assetsPath = process.env.VUE_APP_ASSETS
     const email = ref('')
 
     function onSubmit (): void {

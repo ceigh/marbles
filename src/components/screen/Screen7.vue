@@ -19,7 +19,7 @@ export default defineComponent({
   components: { AppBuy },
 
   setup () {
-    const assetsPath = `${process.env.VUE_APP_ROOT}${process.env.BASE_URL}`
+    const assetsPath = process.env.VUE_APP_ASSETS
 
     return {
       assetsPath

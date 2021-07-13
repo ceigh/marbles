@@ -47,7 +47,7 @@ interface Card {
 
 export default defineComponent({
   setup () {
-    const assetsPath = `${process.env.VUE_APP_ROOT}${process.env.BASE_URL}`
+    const assetsPath = process.env.VUE_APP_ASSETS
 
     const cards: Card[] = [
       {

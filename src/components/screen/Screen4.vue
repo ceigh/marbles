@@ -50,7 +50,8 @@ export default defineComponent({
   components: { AppBuy },
 
   setup () {
-    const assetsPath = `${process.env.VUE_APP_ROOT}${process.env.BASE_URL}`
+    const assetsPath = process.env.VUE_APP_ASSETS
+
     const images = [
       `${assetsPath}img/photo.jpeg`,
       'https://picsum.photos/600/800',

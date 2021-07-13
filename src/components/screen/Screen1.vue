@@ -24,8 +24,10 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   setup () {
+    const assetsPath = process.env.VUE_APP_ASSETS
+
     return {
-      assetsPath: `${process.env.VUE_APP_ROOT}${process.env.BASE_URL}`
+      assetsPath
     }
   }
 })
