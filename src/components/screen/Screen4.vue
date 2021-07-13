@@ -75,6 +75,8 @@ export default defineComponent({
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 93px;
+  background-size: 1650px !important;
+  background-position: -30px -50px !important;
 }
 
 .col {
