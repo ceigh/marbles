@@ -1,30 +1,32 @@
 <template>
-  <p class="cost">
-    {{ costTotal }} ₽
-  </p>
-  <p class="delivery">
-    <span class="delivery-highlight">Бесплатная доставка</span>
-    <br>
-    до пункта выдачи СДЭК или Боксберри
-  </p>
+  <div class="buy">
+    <p class="cost">
+      {{ costTotal }} ₽
+    </p>
+    <p class="delivery">
+      <span class="delivery-highlight">Бесплатная доставка</span>
+      <br>
+      до пункта выдачи СДЭК или Боксберри
+    </p>
 
-  <div class="btn btn-quantity">
-    <div class="btn-quantity-quantity">
-      {{ quantity }} {{ quantityStr }}
+    <div class="btn btn-quantity">
+      <div class="btn-quantity-quantity">
+        {{ quantity }} {{ quantityStr }}
+      </div>
+      <div class="btn-quantity-actions">
+        <button @click="changeQuantity(+1)">
+          +
+        </button>
+        <button @click="changeQuantity(-1)">
+          -
+        </button>
+      </div>
     </div>
-    <div class="btn-quantity-actions">
-      <button @click="changeQuantity(+1)">
-        +
-      </button>
-      <button @click="changeQuantity(-1)">
-        -
-      </button>
-    </div>
+
+    <button class="btn btn-buy">
+      КУПИТЬ
+    </button>
   </div>
-
-  <button class="btn btn-buy">
-    КУПИТЬ
-  </button>
 </template>
 
 <script lang="ts">
@@ -67,6 +69,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.buy {
+  color: $white;
+}
+
 .cost {
   font-size: 60px;
   line-height: 90px;

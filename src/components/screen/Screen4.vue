@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div class="col-2">
+    <div>
       <p class="heading">
         Настольная игра МАРБЛС
       </p>
@@ -87,10 +87,6 @@ export default defineComponent({
       @include transition;
     }
   }
-
-  &-2 {
-    color: $white;
-  }
 }
 
 .dot {
@@ -128,6 +124,7 @@ export default defineComponent({
 }
 
 .desc {
+  color: $white;
   font-size: 27px;
   line-height: 40px;
   max-width: 380px;

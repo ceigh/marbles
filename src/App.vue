@@ -13,6 +13,7 @@
   <screen-4 />
   <screen-5 />
   <screen-6 />
+  <screen-7 />
 </template>
 
 <script lang="ts">
@@ -24,6 +25,7 @@ import Screen3 from './components/screen/Screen3.vue'
 import Screen4 from './components/screen/Screen4.vue'
 import Screen5 from './components/screen/Screen5.vue'
 import Screen6 from './components/screen/Screen6.vue'
+import Screen7 from './components/screen/Screen7.vue'
 
 export default defineComponent({
   components: {
@@ -33,7 +35,8 @@ export default defineComponent({
     Screen3,
     Screen4,
     Screen5,
-    Screen6
+    Screen6,
+    Screen7
   },
 
   setup () {
