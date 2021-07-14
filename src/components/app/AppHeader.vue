@@ -4,7 +4,7 @@
   >
     <a
       class="header-logo"
-      href="/"
+      :href="publicPath"
     >
       МАРБЛС
     </a>
@@ -27,8 +27,8 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  /*
   setup () {
+    /*
     const scrolled = ref(false)
 
     function handleScroll (): void {
@@ -40,12 +40,13 @@ export default defineComponent({
     onUnmounted(() => {
       window.removeEventListener('scroll', handleScroll)
     })
+    */
 
     return {
-      scrolled
+      publicPath: process.env.BASE_URL
+      // scrolled
     }
   }
-  */
 })
 </script>
 
