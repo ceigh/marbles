@@ -18,7 +18,7 @@
         :key="i"
       >
         <a
-          :href="`${publicPath}${link.href}#`"
+          :href="link.href"
         >
           {{ link.text }}
         </a>
@@ -42,27 +42,29 @@ interface Link {
 
 export default defineComponent({
   setup () {
+    const publicPath = process.env.BASE_URL
+
     const links: Link[] = [
       {
-        href: '',
+        href: '#',
         text: 'Правила игры'
       },
       {
-        href: '',
+        href: '#',
         text: 'Пользовательское соглашение'
       },
       {
-        href: '',
+        href: '#',
         text: 'Политика конфиденциальности'
       },
       {
-        href: '',
+        href: '#order',
         text: 'Заказать игру'
       }
     ]
 
     return {
-      publicPath: process.env.BASE_URL,
+      publicPath,
       assetsPath: process.env.VUE_APP_ASSETS,
       links
     }
