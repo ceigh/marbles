@@ -13,9 +13,7 @@ module.exports = {
 
   productionSourceMap: false,
 
-  pluginOptions: {
-    lintStyleOnBuild: true
-  },
+  pluginOptions: { lintStyleOnBuild: true },
 
   css: {
     extract: false,
@@ -30,9 +28,7 @@ module.exports = {
   },
 
   configureWebpack: {
-    optimization: {
-      splitChunks: false
-    },
+    optimization: { splitChunks: false },
     plugins: [
       new HtmlWebpackPlugin({
         filename: 'index.html',
