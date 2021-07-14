@@ -14,6 +14,8 @@
   <screen-5 />
   <screen-6 />
   <screen-7 />
+
+  <app-footer />
 </template>
 
 <script lang="ts">
@@ -26,6 +28,7 @@ import Screen4 from './components/screen/Screen4.vue'
 import Screen5 from './components/screen/Screen5.vue'
 import Screen6 from './components/screen/Screen6.vue'
 import Screen7 from './components/screen/Screen7.vue'
+import AppFooter from './components/app/AppFooter.vue'
 
 export default defineComponent({
   components: {
@@ -36,7 +39,8 @@ export default defineComponent({
     Screen4,
     Screen5,
     Screen6,
-    Screen7
+    Screen7,
+    AppFooter
   },
 
   setup () {
