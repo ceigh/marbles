@@ -94,6 +94,7 @@ export default defineComponent({
 }
 
 .btn {
+  user-select: none;
   color: $text-main;
   text-decoration: none;
   padding: 10px 11px;

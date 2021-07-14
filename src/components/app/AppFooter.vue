@@ -96,6 +96,7 @@ export default defineComponent({
       color: $gray;
       text-decoration: none;
       margin-bottom: 10px;
+      user-select: none;
 
       @include font-bold;
     }
