@@ -12,12 +12,15 @@
     <div>
       <a
         class="a"
-        href="#"
+        href="#questions"
       >
         Задать вопрос
       </a>
 
-      <button>ЗАКАЗАТЬ</button>
+      <a
+        class="btn"
+        href="#order"
+      >ЗАКАЗАТЬ</a>
     </div>
   </div>
 </template>
@@ -90,7 +93,9 @@ export default defineComponent({
   }
 }
 
-button {
+.btn {
+  color: $text-main;
+  text-decoration: none;
   padding: 10px 11px;
   line-height: 18.96px;
   border-radius: 6px;

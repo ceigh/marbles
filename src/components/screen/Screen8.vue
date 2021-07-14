@@ -1,5 +1,8 @@
 <template>
-  <div class="screen">
+  <div
+    id="questions"
+    class="screen"
+  >
     <h3>У вас есть вопросы по игре или правилам?</h3>
     <h4>
       Задавайте их нам!

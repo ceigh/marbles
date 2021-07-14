@@ -1,5 +1,6 @@
 <template>
   <div
+    id="order"
     class="screen"
     :style="{ background: `url('${assetsPath}img/pattern.svg')`}"
   >
