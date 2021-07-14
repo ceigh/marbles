@@ -23,7 +23,10 @@
       </div>
     </div>
 
-    <button class="btn btn-buy">
+    <button
+      class="btn btn-buy"
+      @click="buy"
+    >
       КУПИТЬ
     </button>
   </div>
@@ -58,11 +61,16 @@ export default defineComponent({
       quantity.value = newQuantity < 1 ? 1 : newQuantity
     }
 
+    function buy (): void {
+      alert(quantity.value)
+    }
+
     return {
       quantity,
       quantityStr,
       costTotal,
-      changeQuantity
+      changeQuantity,
+      buy
     }
   }
 })
