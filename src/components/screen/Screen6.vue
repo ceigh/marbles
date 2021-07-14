@@ -148,6 +148,9 @@ export default defineComponent({
 
       li {
         counter-increment: li;
+        max-width: 444px;
+        position: relative;
+        padding-left: 30px;
 
         &:not(:last-child) {
           margin-bottom: 12px;
@@ -157,6 +160,8 @@ export default defineComponent({
           $size: 22px;
 
           content: counter(li);
+          position: absolute;
+          left: 0;
           background: $white;
           display: inline-flex;
           align-items: center;
