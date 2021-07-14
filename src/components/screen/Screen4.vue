@@ -32,12 +32,18 @@
       <app-buy />
 
       <div class="btn-other">
-        <button class="btn btn-ozone">
+        <app-external-link
+          class="btn btn-ozone"
+          href="https://ozon.ru"
+        >
           Купить на OZON
-        </button>
-        <button class="btn btn-wb">
+        </app-external-link>
+        <app-external-link
+          class="btn btn-wb"
+          href="https://wildberries.ru"
+        >
           Купить на WB
-        </button>
+        </app-external-link>
       </div>
     </div>
   </div>
@@ -46,9 +52,13 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import AppBuy from '../app/AppBuy.vue'
+import AppExternalLink from '../app/AppExternalLink.vue'
 
 export default defineComponent({
-  components: { AppBuy },
+  components: {
+    AppBuy,
+    AppExternalLink
+  },
 
   setup () {
     const assetsPath = process.env.VUE_APP_ASSETS
@@ -155,8 +165,11 @@ export default defineComponent({
     gap: 20px;
     max-width: $mw;
 
-    button {
-      border: none;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
       max-width: unset;
       font-size: 18px;
       line-height: 21px;

@@ -10,17 +10,16 @@
 
     <div class="bottom">
       <div>
-        <a
+        <app-external-link
           class="tg"
           :href="`https://t.me/${tg}`"
-          target="_blank"
         >
           <img
             :src="`${assetsPath}img/telegram.svg`"
             alt="telegram"
           >
           <span>@{{ tg }}</span>
-        </a>
+        </app-external-link>
 
         <a
           class="email"
@@ -43,8 +42,11 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import AppExternalLink from '../app/AppExternalLink.vue'
 
 export default defineComponent({
+  components: { AppExternalLink },
+
   setup () {
     return {
       assetsPath: process.env.VUE_APP_ASSETS,
