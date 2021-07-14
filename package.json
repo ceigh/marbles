@@ -6,8 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build && del dist/js",
     "lint": "yarn lint:es && yarn lint:style",
-    "lint:es": "vue-cli-service lint",
-    "lint:style": "vue-cli-service lint:style",
+    "lint:es": "vue-cli-service lint --no-fix",
+    "lint:style": "vue-cli-service lint:style --no-fix",
     "preview": "serve -s dist"
   },
   "dependencies": {
