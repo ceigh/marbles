@@ -7,30 +7,28 @@
 
     <div class="bottom">
       <div>
-        <button class="tg">
-          <a
-            :href="`https://t.me/${tg}`"
-            target="_blank"
+        <a
+          class="tg"
+          :href="`https://t.me/${tg}`"
+          target="_blank"
+        >
+          <img
+            :src="`${assetsPath}img/telegram.svg`"
+            alt="telegram"
           >
-            <img
-              :src="`${assetsPath}img/telegram.svg`"
-              alt="telegram"
-            >
-            <span>@{{ tg }}</span>
-          </a>
-        </button>
+          <span>@{{ tg }}</span>
+        </a>
 
-        <button class="email">
-          <a
-            :href="`mailto:${email}`"
+        <a
+          class="email"
+          :href="`mailto:${email}`"
+        >
+          <img
+            :src="`${assetsPath}img/email.svg`"
+            alt="email"
           >
-            <img
-              :src="`${assetsPath}img/email.svg`"
-              alt="email"
-            >
-            <span>{{ email }}</span>
-          </a>
-        </button>
+          <span>{{ email }}</span>
+        </a>
       </div>
 
       <div>
@@ -78,13 +76,18 @@ export default defineComponent({
   }
 }
 
-button {
-  background: transparent;
+a {
   border: 1px solid;
   border-radius: 26px;
   border-color: var(--color);
   color: var(--color);
-  padding: 0;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 12px;
+  font-size: 20px;
+  line-height: 30px;
+  user-select: none;
 
   @include transition;
 
@@ -101,18 +104,8 @@ button {
     margin-right: 40px;
   }
 
-  a {
-    color: inherit;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    padding: 10px 12px;
-    font-size: 20px;
-    line-height: 30px;
-
-    img {
-      margin-right: 9px;
-    }
+  img {
+    margin-right: 9px;
   }
 
   &.tg {
