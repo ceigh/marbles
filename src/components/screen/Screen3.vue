@@ -7,7 +7,6 @@
       :class="`shape-${i + 2}`"
       :src="`${assetsPath}img/shape-${i + 2}.svg`"
       :alt="`фигура ${i + 2}`"
-      loading="lazy"
     >
 
     <div class="cols">
@@ -15,7 +14,6 @@
         <img
           :src="`${assetsPath}img/laurel.png`"
           alt="лавры"
-          loading="lazy"
         >
 
         <h3>Международное признание</h3>
@@ -29,7 +27,6 @@
             <img
               :src="review.img"
               alt="аватар"
-              loading="lazy"
             >
             <p>{{ review.text }}</p>
           </div>
@@ -41,7 +38,6 @@
           class="quote"
           :src="`${assetsPath}img/quote.svg`"
           alt="кавычки"
-          loading="lazy"
         >
 
         <h3>Отзывы игроков</h3>
@@ -56,7 +52,6 @@
               class="review-2-cover"
               :src="review.img"
               alt="фото"
-              loading="lazy"
             >
 
             <div class="review-2-meta">
@@ -66,7 +61,6 @@
                   :key="j"
                   :src="`${assetsPath}img/star.svg`"
                   alt="звезда"
-                  loading="lazy"
                 >
               </div>
 
@@ -84,7 +78,6 @@
           class="part"
           :src="`${assetsPath}img/part-3.png`"
           alt="part 3"
-          loading="lazy"
         >
       </div>
     </div>

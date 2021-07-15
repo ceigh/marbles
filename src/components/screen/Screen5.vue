@@ -5,7 +5,6 @@
         <img
           :src="`${assetsPath}img/dots.svg`"
           alt="точки"
-          loading="lazy"
         >
 
         <div>
@@ -39,7 +38,6 @@
         :key="i"
         :src="`${assetsPath}img/card-${i % 2 ? 'front' : 'back'}.svg`"
         alt="карта"
-        loading="lazy"
       >
     </div>
   </div>

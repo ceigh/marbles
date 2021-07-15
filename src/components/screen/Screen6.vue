@@ -32,7 +32,6 @@
         <img
           :src="`${assetsPath}img/gift.svg`"
           alt="подарок"
-          loading="lazy"
         >
         <p>750 ₽ + 750 ₽</p>
       </div>

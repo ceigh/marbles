@@ -28,7 +28,6 @@
     <img
       :src="`${assetsPath}img/line.svg`"
       alt="линия"
-      loading="lazy"
     >
   </div>
 </template>

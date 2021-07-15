@@ -10,13 +10,11 @@
       :class="`part-${i}`"
       :src="`${assetsPath}img/part-${i}.png`"
       :alt="`часть ${i}`"
-      loading="lazy"
     >
     <img
       class="cards"
       :src="`${assetsPath}img/cards.png`"
       alt="карточки"
-      loading="lazy"
     >
   </div>
 </template>

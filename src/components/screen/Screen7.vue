@@ -9,13 +9,11 @@
         class="box"
         :src="`${assetsPath}img/box.svg`"
         alt="коробка"
-        loading="lazy"
       >
       <img
         class="cards"
         :src="`${assetsPath}img/cards.svg`"
         alt="карты"
-        loading="lazy"
       >
     </div>
 

@@ -17,7 +17,6 @@
           <img
             :src="`${assetsPath}img/telegram.svg`"
             alt="telegram"
-            loading="lazy"
           >
           <span>@{{ tg }}</span>
         </app-external-link>
@@ -29,7 +28,6 @@
           <img
             :src="`${assetsPath}img/email.svg`"
             alt="email"
-            loading="lazy"
           >
           <span>{{ email }}</span>
         </a>
