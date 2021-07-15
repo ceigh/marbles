@@ -4,6 +4,7 @@
       class="users"
       :src="`${assetsPath}img/users.svg`"
       alt="пользователи"
+      loading="lazy"
     >
 
     <h3>Почему миллионы людей играют в МАРБЛС</h3>
@@ -15,6 +16,7 @@
       :class="`shape-${i}`"
       :src="`${assetsPath}img/shape-${i}.svg`"
       :alt="`фигура ${i}`"
+      loading="lazy"
     >
 
     <div class="cards">
@@ -26,6 +28,7 @@
         <img
           :src="card.img"
           alt="карточка"
+          loading="lazy"
         >
         <div class="card-meta">
           <h4>{{ card.title }}</h4>
