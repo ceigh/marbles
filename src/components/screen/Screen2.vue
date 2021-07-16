@@ -4,6 +4,7 @@
       class="users"
       :src="`${assetsPath}img/users.svg`"
       alt="пользователи"
+      loading="lazy"
     >
 
     <h3>Почему миллионы людей играют в МАРБЛС</h3>
