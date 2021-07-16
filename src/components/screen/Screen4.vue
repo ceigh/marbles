@@ -2,14 +2,51 @@
   <div
     id="order"
     class="screen"
-    :style="{ background: `url('${assetsPath}img/pattern.svg')`}"
   >
-    <div class="col-1">
+    <div class="circles">
       <div
-        class="img"
-        :style="{ 'background-image': `url('${images[currentImg]}')` }"
+        v-for="i in 5"
+        :key="i"
+        class="circle"
+        :class="{ 'circle-highlight': i > 2 }"
       />
+    </div>
 
+    <div class="col-1">
+      <div class="img-current-container">
+        <img
+          class="tick"
+          :class="{ 'tick-disabled': currentImg === 0 }"
+          :src="`${assetsPath}img/tick.svg`"
+          alt="<"
+          @click="incImg(-1)"
+        >
+        <div
+          class="img-current"
+          :style="{ 'background-image': `url('${images[currentImg]}')` }"
+        />
+        <img
+          class="tick"
+          :class="{ 'tick-disabled': currentImg === images.length - 1 }"
+          :src="`${assetsPath}img/tick.svg`"
+          alt=">"
+          @click="incImg(1)"
+        >
+      </div>
+
+      <div class="img-all">
+        <img
+          v-for="(img, i) in images"
+          :key="i"
+          v-lazy="img"
+          class="img-all-img"
+          :class="{ 'img-all-img-current': currentImg === i }"
+          alt="фото"
+          @click="currentImg = i"
+        >
+      </div>
+
+      <!--
       <div class="dots">
         <button
           v-for="i in images.length"
@@ -19,9 +56,10 @@
           @click="currentImg = i - 1"
         />
       </div>
+      -->
     </div>
 
-    <div>
+    <div class="col-2">
       <p class="heading">
         Настольная игра МАРБЛС
       </p>
@@ -66,15 +104,30 @@ export default defineComponent({
     const images = [
       `${assetsPath}img/photo.jpeg`,
       'https://picsum.photos/600/800',
-      'https://picsum.photos/601/800',
-      'https://picsum.photos/602/800'
+      'https://picsum.photos/601/800'
+      /*
+      'https://picsum.photos/602/800',
+      'https://picsum.photos/603/800',
+      'https://picsum.photos/604/800',
+      'https://picsum.photos/605/800'
+      */
     ]
     const currentImg = ref(0)
+
+    function incImg (inc: -1 | 1): void {
+      const len = images.length
+      let newCurr = currentImg.value + inc
+      if (newCurr < 0) newCurr = 0
+      else if (newCurr === len) newCurr = len - 1
+      currentImg.value = newCurr
+    }
 
     return {
       assetsPath,
       images,
-      currentImg
+      currentImg,
+
+      incImg
     }
   }
 })
@@ -82,27 +135,142 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .screen {
-  padding: 31px 77px 77px;
+  position: relative;
+  padding: 0 0 86px 231px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 93px;
-  background-size: 1650px !important;
-  background-position: -30px -50px !important;
+  grid-template-columns: 1fr auto;
+  gap: 124px;
+  background: $text-main;
+  overflow-x: hidden;
+}
+
+.circle {
+  $size: 78px;
+
+  width: $size;
+  height: $size;
+  background: #3a3a3a;
+  border-radius: 100%;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &-highlight {
+    background: transparent;
+    border: 4px solid $yellow;
+    filter:
+      drop-shadow(0 0 16px $yellow)
+      drop-shadow(0 0 8px rgba($yellow, 0.4))
+      drop-shadow(0 0 4px rgba($yellow, 0.25));
+  }
+
+  &s {
+    position: absolute;
+    left: $size / -2;
+    top: 140px;
+  }
 }
 
 .col {
   &-1 {
-    .img {
-      height: 701px;
-      width: 100%;
-      background-size: cover;
-      border-radius: 17px;
+    padding-top: 139px;
 
-      @include transition;
+    .img {
+      $width: 442px;
+
+      &-current {
+        height: 494px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 17px;
+        background-size: cover;
+
+        @include transition;
+
+        &-container {
+          position: relative;
+          width: $width;
+
+          .tick {
+            $spacing: 40px;
+
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: auto;
+            cursor: pointer;
+
+            @include transition;
+
+            &:first-of-type {
+              left: $spacing / -1;
+            }
+
+            &:last-of-type {
+              right: $spacing / -1;
+              transform: rotate(180deg);
+            }
+
+            &:hover {
+              opacity: 0.7;
+            }
+
+            &:active {
+              opacity: 0.5;
+            }
+
+            &-disabled {
+              opacity: 0.3 !important;
+              cursor: initial;
+            }
+          }
+        }
+      }
+
+      &-all {
+        margin-top: 10px;
+        display: flex;
+        width: $width;
+        overflow-x: auto;
+
+        &-img {
+          flex: 0 0 100px;
+          height: 77px;
+          object-fit: cover;
+          border-radius: 7px;
+          pointer-events: auto;
+          cursor: pointer;
+
+          @include transition;
+
+          &:not(:last-child) {
+            margin-right: 10px;
+          }
+
+          &:hover {
+            opacity: 0.7;
+          }
+
+          &:active {
+            opacity: 0.5;
+          }
+
+          &-current {
+            opacity: 0.5 !important;
+            cursor: initial;
+          }
+        }
+      }
     }
+  }
+
+  &-2 {
+    padding-top: 86px;
   }
 }
 
+/*
 .dot {
   $size: 15px;
 
@@ -128,6 +296,7 @@ export default defineComponent({
     margin-top: 30px;
   }
 }
+*/
 
 .heading {
   font-size: 52px;
