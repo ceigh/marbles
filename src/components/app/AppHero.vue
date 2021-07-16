@@ -1,9 +1,19 @@
 <template>
-  <img
-    class="photo"
-    :src="`${assetsPath}img/photo.jpeg`"
-    alt="фото"
+  <video
+    autoplay
+    muted
+    loop
+    :poster="`${assetsPath}img/photo.jpeg`"
   >
+    <source
+      src="https://cdn.shopify.com/s/files/1/0312/2737/9849/files/HomeHero_20210120.webm"
+      type="video/webm"
+    >
+    <source
+      src="https://cdn.shopify.com/s/files/1/0312/2737/9849/files/HomeHero_20210120.mp4"
+      type="video/mp4"
+    >
+  </video>
 </template>
 
 <script lang="ts">
@@ -21,9 +31,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.photo {
+video {
   width: 100%;
   max-height: 546px;
   object-fit: cover;
+  pointer-events: none;
 }
 </style>
