@@ -57,7 +57,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from 'vue'
+import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
 
 interface Benefit {
   img: string
@@ -108,13 +108,29 @@ export default defineComponent({
     ]
 
     const cards = ref<HTMLDivElement>()
+
+    let oldScrollY = 0
+    function onScroll (): void {
+      const cardsEl = cards.value
+      if (!cardsEl) return
+
+      const { scrollY } = window
+      const dir = oldScrollY > scrollY ? 1 : -1
+      cardsEl.scrollLeft -= dir * 5
+      oldScrollY = scrollY
+    }
+
     onMounted(() => {
+      window.addEventListener('scroll', onScroll)
+
       const cardsEl = cards.value
       if (!cardsEl) return
       setTimeout(() => {
-        cardsEl.scrollLeft = cardsEl.scrollWidth / 2
+        cardsEl.scrollLeft = cardsEl.scrollWidth / 3
       }, 500)
     })
+
+    onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
     return {
       assetsPath,
