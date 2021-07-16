@@ -2,7 +2,7 @@
   <div class="screen">
     <div class="col-1">
       <form
-        :style="`--bg: url('${assetsPath}img/noise.png')`"
+        :style="`--bg: url('${assetsPath}img/noise.gif')`"
         @submit.prevent="onSubmit"
       >
         <h4>
