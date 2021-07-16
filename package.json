@@ -13,7 +13,8 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "modern-css-reset": "^1.4.0",
-    "vue": "^3.0.0"
+    "vue": "^3.0.0",
+    "vue3-lazyload": "^0.2.2-beta"
   },
   "devDependencies": {
     "@ascendancyy/vue-cli-plugin-stylelint": "^1.1.2",

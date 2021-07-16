@@ -1,4 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+import VueLazyLoad from 'vue3-lazyload'
+
+const assetsPath = process.env.VUE_APP_ASSETS
+
+createApp(App)
+  .use(VueLazyLoad, { loading: `${assetsPath}img/loading.svg` })
+  .mount('#app')

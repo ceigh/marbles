@@ -25,7 +25,7 @@
         class="card"
       >
         <img
-          :src="card.img"
+          v-lazy="card.img"
           alt="карточка"
         >
         <div class="card-meta">
@@ -52,18 +52,18 @@ export default defineComponent({
 
     const cards: Card[] = [
       {
-        img: `${assetsPath}img/photo.jpeg`,
+        img: 'https://cdn.shopify.com/s/files/1/0252/6845/3410/products/amethyst-shere-xxl.mov-low_2048x.gif',
         title: 'В игре более 1 трлн возможных исходов',
         desc: `Вы никогда не будете играть в одну и ту же игру,
 вам никогда не надоест, обещаем!`
       },
       {
-        img: `${assetsPath}img/photo.jpeg`,
+        img: 'https://cdn.shopify.com/s/files/1/0252/6845/3410/products/black-obsidian-sphere-xxl.mov-low_2048x.gif',
         title: 'Очень крутые тактильные ощущения',
         desc: 'В игре используются деревянные доски и стеклянные шарики марблсы'
       },
       {
-        img: `${assetsPath}img/photo.jpeg`,
+        img: 'https://cdn.shopify.com/s/files/1/0252/6845/3410/products/Hnet-image_4_68320e8f-bf73-4701-a0a0-1fefb87a45d0_2048x.gif',
         title: 'Объединяйтесь в команды и пары',
         desc: 'Собирайтесь командой до 6 людей и играйте в свое удовольствие'
       }
