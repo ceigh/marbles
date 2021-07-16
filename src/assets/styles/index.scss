@@ -5,6 +5,10 @@
   color: $text-main;
 }
 
+:target {
+  scroll-margin-top: 77px; /* stylelint-disable-line property-no-unknown */
+}
+
 body {
   font-family: Rubik, sans-serif;
   background: $white;
