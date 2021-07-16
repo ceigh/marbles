@@ -23,8 +23,12 @@
           v-for="(card, i) in benefits"
           :key="i"
           class="benefits-cards-card"
-          :style="{ backgroundImage: getBg(card.img) }"
         >
+          <img
+            v-lazy="card.img"
+            alt="фото"
+          >
+          <div class="benefits-cards-card-bg" />
           <p class="benefits-cards-card-num">
             {{ card.num }}
           </p>
@@ -60,52 +64,45 @@ export default defineComponent({
 
     const benefits: Benefit[] = [
       {
-        img: `${assetsPath}img/photo.jpeg`,
+        img: 'https://cdn.shopify.com/s/files/1/0252/6845/3410/products/spirit-quartz-xxl-consign.mov-low_2048x.gif',
         num: '108',
         item: 'карт'
       },
       {
-        img: `${assetsPath}img/photo.jpeg`,
+        img: 'https://cdn.shopify.com/s/files/1/0252/6845/3410/products/Hnet-image_7_82a06331-8999-4f67-bcdc-d60074c92eb5_2048x.gif',
         num: '6',
         item: 'деревянных досок'
       },
       {
-        img: `${assetsPath}img/photo.jpeg`,
+        img: 'https://cdn.shopify.com/s/files/1/0252/6845/3410/products/black-obsidian-sphere-xxl.mov-low_2048x.gif',
         num: '30',
         item: 'стеклянных марблов'
       },
       {
-        img: `${assetsPath}img/photo.jpeg`,
+        img: 'https://cdn.shopify.com/s/files/1/0252/6845/3410/products/small-museum-fluorite-.mov-low_2048x.gif',
         num: '2-6',
         item: 'игроков'
       },
       {
-        img: `${assetsPath}img/photo.jpeg`,
+        img: 'https://cdn.shopify.com/s/files/1/0252/6845/3410/products/onyx-sphere-xxl.mov-low_2048x.gif',
         num: '30-90',
         item: 'минут игрового времени'
       },
       {
-        img: `${assetsPath}img/photo.jpeg`,
+        img: 'https://cdn.shopify.com/s/files/1/0252/6845/3410/products/Hnet-image_9_db151902-968d-4368-9365-d16be794914d_2048x.gif',
         num: '10*15',
         item: 'игровых комбинаций'
       },
       {
-        img: `${assetsPath}img/photo.jpeg`,
+        img: 'https://cdn.shopify.com/s/files/1/0252/6845/3410/products/Hnet.com-image_16_400x.gif',
         num: 'от 6',
         item: 'лет'
       }
     ]
 
-    function getBg (img: string): string {
-      return `linear-gradient(245.99deg, var(--gradient-start) 44.68%,
-        var(--gradient-end) 79.16%), url('${img}')`
-    }
-
     return {
       assetsPath,
-      benefits,
-
-      getBg
+      benefits
     }
   }
 })
@@ -126,19 +123,43 @@ export default defineComponent({
     margin-bottom: 117px;
 
     &-card {
-      --gradient-start: #{rgba($text-main, 0)};
-      --gradient-end: #{rgba($text-main, 0.7)};
-
+      position: relative;
       width: 190px;
       height: 195px;
       flex-shrink: 0;
       border-radius: 10px;
       color: $white;
       padding: 104px 0 34px 10px;
-      background-size: cover;
 
       &:not(:last-child) {
         margin-right: 20px;
+      }
+
+      p {
+        position: relative;
+      }
+
+      img,
+      &-bg {
+        border-radius: inherit;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      img {
+        object-fit: cover;
+      }
+
+      &-bg {
+        background:
+          linear-gradient(
+            245.99deg,
+            rgba($text-main, 0) 44.68%,
+            rgba($text-main, 0.7) 79.16%
+          );
       }
 
       &-num {

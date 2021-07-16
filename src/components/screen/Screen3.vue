@@ -55,6 +55,7 @@
               class="review-2-cover"
               :src="review.img"
               alt="фото"
+              loading="lazy"
             >
 
             <div class="review-2-meta">
