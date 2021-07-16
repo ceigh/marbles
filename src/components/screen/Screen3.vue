@@ -45,7 +45,13 @@
 
         <h3>Отзывы игроков</h3>
 
-        <div class="reviews-2">
+        <div
+          v-dragscroll
+          class="reviews-2"
+          :class="{ 'reviews-2-dragging': reviewsDragging }"
+          @mousedown="reviewsDragging = true"
+          @mouseup="reviewsDragging = false"
+        >
           <div
             v-for="(review, i) in reviews2"
             :key="i"
@@ -91,7 +97,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 interface Review1 {
   img: string
@@ -139,13 +145,34 @@ export default defineComponent({
         rate: 5,
         author: 'Владимир, г. Москва',
         text: 'Доставили за 2 дня. Вся компания довольна. Любим настолки'
+      },
+      {
+        img: `${assetsPath}img/photo.jpeg`,
+        rate: 5,
+        author: 'Владимир, г. Москва',
+        text: 'Доставили за 2 дня. Вся компания довольна. Любим настолки'
+      },
+      {
+        img: `${assetsPath}img/photo.jpeg`,
+        rate: 5,
+        author: 'Владимир, г. Москва',
+        text: 'Доставили за 2 дня. Вся компания довольна. Любим настолки'
+      },
+      {
+        img: `${assetsPath}img/photo.jpeg`,
+        rate: 5,
+        author: 'Владимир, г. Москва',
+        text: 'Доставили за 2 дня. Вся компания довольна. Любим настолки'
       }
     ]
+
+    const reviewsDragging = ref(false)
 
     return {
       assetsPath,
       reviews1,
-      reviews2
+      reviews2,
+      reviewsDragging
     }
   }
 })
@@ -267,6 +294,12 @@ export default defineComponent({
 
     &-2 {
       align-items: flex-start;
+      overflow-x: hidden;
+      cursor: grab;
+
+      &-dragging {
+        cursor: grabbing;
+      }
     }
   }
 }

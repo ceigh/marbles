@@ -186,8 +186,6 @@ export default defineComponent({
         border-radius: 17px;
         background-size: cover;
 
-        @include transition;
-
         &-container {
           position: relative;
           width: $width;

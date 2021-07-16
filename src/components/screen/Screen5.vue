@@ -180,6 +180,7 @@ export default defineComponent({
   &-title {
     font-size: 52px;
     line-height: 64px;
+    user-select: none;
 
     @include font-bold;
   }
