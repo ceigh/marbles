@@ -46,7 +46,7 @@
         <h3>Отзывы игроков</h3>
 
         <div
-          v-dragscroll
+          v-dragscroll.x
           class="reviews-2"
         >
           <div

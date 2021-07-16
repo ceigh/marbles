@@ -19,7 +19,7 @@
       </div>
 
       <div
-        v-dragscroll
+        v-dragscroll.x
         class="benefits-cards"
       >
         <div
@@ -40,9 +40,13 @@
       </div>
     </div>
 
-    <div class="cards">
+    <div
+      ref="cards"
+      v-dragscroll.x
+      class="cards"
+    >
       <img
-        v-for="i in 6"
+        v-for="i in 20"
         :key="i"
         :src="`${assetsPath}img/card-${i % 2 ? 'front' : 'back'}.svg`"
         alt="карта"
@@ -53,7 +57,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, onMounted } from 'vue'
 
 interface Benefit {
   img: string
@@ -103,9 +107,19 @@ export default defineComponent({
       }
     ]
 
+    const cards = ref<HTMLDivElement>()
+    onMounted(() => {
+      const cardsEl = cards.value
+      if (!cardsEl) return
+      setTimeout(() => {
+        cardsEl.scrollLeft = cardsEl.scrollWidth / 2
+      }, 500)
+    })
+
     return {
       assetsPath,
-      benefits
+      benefits,
+      cards
     }
   }
 })
@@ -207,9 +221,11 @@ $padding-left: 165px;
 }
 
 .cards {
+  padding: 50px;
   display: flex;
+  overflow-x: hidden;
   position: absolute;
-  left: -45px;
+  left: 0;
   bottom: 0;
 }
 </style>
