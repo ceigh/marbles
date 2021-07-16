@@ -48,9 +48,6 @@
         <div
           v-dragscroll
           class="reviews-2"
-          :class="{ 'reviews-2-dragging': reviewsDragging }"
-          @mousedown="reviewsDragging = true"
-          @mouseup="reviewsDragging = false"
         >
           <div
             v-for="(review, i) in reviews2"
@@ -166,13 +163,10 @@ export default defineComponent({
       }
     ]
 
-    const reviewsDragging = ref(false)
-
     return {
       assetsPath,
       reviews1,
-      reviews2,
-      reviewsDragging
+      reviews2
     }
   }
 })
@@ -244,6 +238,7 @@ export default defineComponent({
     background: $white;
     box-shadow: 0 0 17px rgba(176, 176, 176, 0.2);
     border-radius: $corner;
+    user-select: none;
 
     &:not(:last-child) {
       margin-right: 20px;
@@ -295,11 +290,6 @@ export default defineComponent({
     &-2 {
       align-items: flex-start;
       overflow-x: hidden;
-      cursor: grab;
-
-      &-dragging {
-        cursor: grabbing;
-      }
     }
   }
 }

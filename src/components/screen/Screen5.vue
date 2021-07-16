@@ -18,7 +18,10 @@
         </div>
       </div>
 
-      <div class="benefits-cards">
+      <div
+        v-dragscroll
+        class="benefits-cards"
+      >
         <div
           v-for="(card, i) in benefits"
           :key="i"
@@ -50,7 +53,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 interface Benefit {
   img: string
@@ -109,6 +112,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+$padding-left: 165px;
+
 .screen {
   position: relative;
   margin-bottom: 96px;
@@ -116,11 +121,14 @@ export default defineComponent({
 }
 
 .benefits {
-  padding: 100px 0 0 165px;
+  padding-top: 100px;
 
   &-cards {
     display: flex;
     margin-bottom: 117px;
+    overflow-x: hidden;
+    user-select: none;
+    padding: 0 $padding-left / 3 0 $padding-left;
 
     &-card {
       position: relative;
@@ -176,6 +184,7 @@ export default defineComponent({
   display: flex;
   align-items: flex-end;
   margin-bottom: 89px;
+  padding-left: $padding-left;
 
   &-title {
     font-size: 52px;
