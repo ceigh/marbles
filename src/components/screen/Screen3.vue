@@ -239,10 +239,7 @@ export default defineComponent({
     box-shadow: 0 0 17px rgba(176, 176, 176, 0.2);
     border-radius: $corner;
     user-select: none;
-
-    &:not(:last-child) {
-      margin-right: 20px;
-    }
+    margin-right: 20px;
 
     &-cover {
       border-top-left-radius: $corner;
@@ -290,6 +287,7 @@ export default defineComponent({
     &-2 {
       align-items: flex-start;
       overflow-x: hidden;
+      max-width: 720px;
     }
   }
 }
