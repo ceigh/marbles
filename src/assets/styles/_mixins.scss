@@ -12,6 +12,16 @@
   font-weight: 500;
 }
 
+@mixin p2 {
+  font-size: 12px;
+  line-height: 18px;
+
+  @include media-breakpoint-down(md) {
+    font-size: 10px;
+    line-height: 15px;
+  }
+}
+
 /* other */
 @mixin transition {
   transition: 0.1s ease-out;

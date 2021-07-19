@@ -77,6 +77,10 @@ export default defineComponent({
     padding: 20px 165px;
 
     @include max-width;
+
+    @include media-breakpoint-down(md) {
+      padding: 14px 15px;
+    }
   }
 
   &-black {
@@ -95,6 +99,17 @@ export default defineComponent({
     font-size: 31px;
     line-height: 37px;
     text-decoration: none;
+
+    @include media-breakpoint-down(md) {
+      font-size: 22px;
+      line-height: 26px;
+    }
+  }
+
+  .a {
+    @include media-breakpoint-down(md) {
+      @include p2;
+    }
   }
 }
 
@@ -108,5 +123,12 @@ export default defineComponent({
   margin-left: 40px;
 
   @include yellow-btn;
+
+  @include media-breakpoint-down(md) {
+    padding: 6px 12px;
+    font-size: 12px;
+    line-height: 14px;
+    margin-left: 6px;
+  }
 }
 </style>
