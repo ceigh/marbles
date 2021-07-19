@@ -20,6 +20,7 @@ module.exports = {
     loaderOptions: {
       sass: {
         additionalData: `
+@use 'sass:math';
 @import '${stylesPath}/variables';
 @import '${stylesPath}/mixins';
 `

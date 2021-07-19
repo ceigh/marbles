@@ -158,7 +158,7 @@ $padding-left: 165px;
     margin-bottom: 117px;
     overflow-x: hidden;
     user-select: none;
-    padding: 0 $padding-left / 3 0 $padding-left;
+    padding: 0 math.div($padding-left, 3) 0 $padding-left;
 
     &-card {
       position: relative;

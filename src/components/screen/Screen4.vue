@@ -167,7 +167,7 @@ export default defineComponent({
 
   &s {
     position: absolute;
-    left: $size / -2;
+    left: math.div($size, -2);
     top: 140px;
   }
 }
@@ -202,11 +202,11 @@ export default defineComponent({
             @include transition;
 
             &:first-of-type {
-              left: $spacing / -1;
+              left: math.div($spacing, -1);
             }
 
             &:last-of-type {
-              right: $spacing / -1;
+              right: math.div($spacing, -1);
               transform: rotate(180deg);
             }
 
