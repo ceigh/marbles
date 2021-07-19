@@ -146,8 +146,8 @@ $padding-left: 12%;
 
 .screen {
   position: relative;
-  margin-bottom: 96px;
   padding-bottom: 420px;
+  background: $white;
 }
 
 .benefits {
@@ -155,7 +155,7 @@ $padding-left: 12%;
 
   &-cards {
     display: flex;
-    margin-bottom: 117px;
+    margin-bottom: 140px;
     overflow-x: hidden;
     user-select: none;
     padding: 0 math.div($padding-left, 3) 0 $padding-left;
@@ -237,7 +237,7 @@ $padding-left: 12%;
 }
 
 .cards {
-  padding: 50px;
+  padding: 96px 50px;
   display: flex;
   overflow-x: hidden;
   position: absolute;

@@ -14,7 +14,7 @@
       :key="i"
       class="shape"
       :class="`shape-${i}`"
-      :src="`${assetsPath}img/shape-${i}.svg`"
+      :src="`${assetsPath}img/shape-${i}.svg#svgView(preserveAspectRatio(none))`"
       :alt="`фигура ${i}`"
     >
 
@@ -84,10 +84,10 @@ export default defineComponent({
 .screen {
   position: relative;
   padding-top: 55px;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 
   @include media-breakpoint-down(md) {
-    padding-top: 45px;
+    padding-top: 55px;
     margin-bottom: 9px;
   }
 }
@@ -130,17 +130,14 @@ h3 {
     top: -95px;
 
     @include media-breakpoint-down(md) {
-      top: -20px;
+      top: 0;
       height: 331px;
-      object-fit: none;
-      object-position: top;
     }
   }
 
   &-2 {
     @include media-breakpoint-down(md) {
       height: 408px;
-      object-fit: none;
     }
   }
 }
