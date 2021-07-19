@@ -33,8 +33,12 @@ export default defineComponent({
 <style lang="scss" scoped>
 video {
   width: 100%;
-  max-height: 546px;
+  height: 546px;
   object-fit: cover;
   pointer-events: none;
+
+  @include media-breakpoint-down(md) {
+    height: 299px;
+  }
 }
 </style>
