@@ -63,6 +63,8 @@ export default defineComponent({
 .screen {
   padding: 100px 0 94px 165px;
 
+  @include max-width;
+
   h3 {
     margin-bottom: 10px;
   }

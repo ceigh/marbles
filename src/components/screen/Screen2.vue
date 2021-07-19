@@ -103,6 +103,7 @@ h3 {
 .shape {
   position: absolute;
   z-index: -2;
+  width: 100%;
 
   &-1 {
     top: -95px;

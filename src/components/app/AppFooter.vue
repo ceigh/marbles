@@ -1,27 +1,29 @@
 <template>
   <div class="footer">
-    <div class="col-1">
-      <a
-        :href="publicPath"
-      >
-        МАРБЛС
-      </a>
-      <p>
-        Новая настольная игра с амбицией переплюнуть Монополию,
-        UNO, Экивоки, Имаджинариум
-      </p>
-    </div>
-
-    <div class="col-2">
-      <div
-        v-for="(link, i) in links"
-        :key="i"
-      >
+    <div class="footer-content">
+      <div class="col-1">
         <a
-          :href="link.href"
+          :href="publicPath"
         >
-          {{ link.text }}
+          МАРБЛС
         </a>
+        <p>
+          Новая настольная игра с амбицией переплюнуть Монополию,
+          UNO, Экивоки, Имаджинариум
+        </p>
+      </div>
+
+      <div class="col-2">
+        <div
+          v-for="(link, i) in links"
+          :key="i"
+        >
+          <a
+            :href="link.href"
+          >
+            {{ link.text }}
+          </a>
+        </div>
       </div>
     </div>
 
@@ -75,15 +77,18 @@ export default defineComponent({
 <style lang="scss" scoped>
 .footer {
   position: relative;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 479px;
-  padding: 0 0 123px 165px;
+
+  &-content {
+    @include max-width;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 479px;
+    padding: 0 0 89px 165px;
+  }
 
   img {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    width: 100%;
   }
 }
 

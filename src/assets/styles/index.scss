@@ -15,8 +15,6 @@ body {
   color: $text-main;
   position: relative;
   overflow-x: hidden;
-
-  @include max-width;
 }
 
 img {

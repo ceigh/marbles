@@ -142,12 +142,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$padding-left: 165px;
+$padding-left: 12%;
 
 .screen {
   position: relative;
   margin-bottom: 96px;
-  padding-bottom: 350px;
+  padding-bottom: 420px;
 }
 
 .benefits {

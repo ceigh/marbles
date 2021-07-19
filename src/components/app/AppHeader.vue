@@ -3,25 +3,27 @@
     class="header"
     :class="{ 'header-black': scrolled }"
   >
-    <a
-      class="header-logo"
-      :href="publicPath"
-    >
-      МАРБЛС
-    </a>
-
-    <div>
+    <div class="header-content">
       <a
-        class="a"
-        href="#questions"
+        class="header-logo"
+        :href="publicPath"
       >
-        Задать вопрос
+        МАРБЛС
       </a>
 
-      <a
-        class="btn"
-        href="#order"
-      >ЗАКАЗАТЬ</a>
+      <div>
+        <a
+          class="a"
+          href="#questions"
+        >
+          Задать вопрос
+        </a>
+
+        <a
+          class="btn"
+          href="#order"
+        >ЗАКАЗАТЬ</a>
+      </div>
     </div>
   </div>
 </template>
@@ -57,10 +59,6 @@ export default defineComponent({
   // position: absolute;
   top: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 165px;
   background:
     linear-gradient(
       180deg,
@@ -70,8 +68,16 @@ export default defineComponent({
   color: #fff;
   z-index: 2;
 
-  @include max-width;
   @include transition;
+
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 165px;
+
+    @include max-width;
+  }
 
   &-black {
     background: $text-main;

@@ -1,60 +1,62 @@
 <template>
   <div class="screen">
-    <div class="col-1">
-      <form
-        :style="`--bg: url('${assetsPath}img/noise.gif')`"
-        @submit.prevent="onSubmit"
-      >
-        <h4>
-          Скоро мы запустим игру в онлайне, чтобы вы смогли играть
-          и доигрывать начатые в оффлайне партии
-        </h4>
-
-        <p class="subtext">
-          Подпишитесь, чтобы узнать об этом:
-        </p>
-
-        <app-input
-          v-model="email"
-          placeholder="Ваш Email"
-          type="email"
-          required
-        />
-
-        <button type="submit">
-          Подписаться
-        </button>
-      </form>
-    </div>
-
-    <div class="col-2">
-      <div class="cost">
-        <img
-          :src="`${assetsPath}img/gift.svg`"
-          alt="подарок"
-          loading="lazy"
+    <div class="screen-content">
+      <div class="col-1">
+        <form
+          :style="`--bg: url('${assetsPath}img/noise.gif')`"
+          @submit.prevent="onSubmit"
         >
-        <p>750 ₽ + 750 ₽</p>
+          <h4>
+            Скоро мы запустим игру в онлайне, чтобы вы смогли играть
+            и доигрывать начатые в оффлайне партии
+          </h4>
+
+          <p class="subtext">
+            Подпишитесь, чтобы узнать об этом:
+          </p>
+
+          <app-input
+            v-model="email"
+            placeholder="Ваш Email"
+            type="email"
+            required
+          />
+
+          <button type="submit">
+            Подписаться
+          </button>
+        </form>
       </div>
 
-      <h3>Зовите друзей!</h3>
-      <p class="desc">
-        После покупки вашими друзьями игры МАРБЛС мы вернем им 750 рублей.
-        Но и вы тоже получите 750 рублей удобным для вас способом
-      </p>
+      <div class="col-2">
+        <div class="cost">
+          <img
+            :src="`${assetsPath}img/gift.svg`"
+            alt="подарок"
+            loading="lazy"
+          >
+          <p>750 ₽ + 750 ₽</p>
+        </div>
 
-      <p class="how">
-        КАК ПОЛУЧИТЬ?
-      </p>
+        <h3>Зовите друзей!</h3>
+        <p class="desc">
+          После покупки вашими друзьями игры МАРБЛС мы вернем им 750 рублей.
+          Но и вы тоже получите 750 рублей удобным для вас способом
+        </p>
 
-      <ol>
-        <li
-          v-for="(step, i) in steps"
-          :key="i"
-        >
-          {{ step }}
-        </li>
-      </ol>
+        <p class="how">
+          КАК ПОЛУЧИТЬ?
+        </p>
+
+        <ol>
+          <li
+            v-for="(step, i) in steps"
+            :key="i"
+          >
+            {{ step }}
+          </li>
+        </ol>
+      </div>
     </div>
   </div>
 </template>
@@ -95,10 +97,15 @@ export default defineComponent({
 <style lang="scss" scoped>
 .screen {
   background: linear-gradient(149.32deg, $yellow 31.34%, #fada08 87.62%);
-  padding: 0 0 137px 117px;
-  display: grid;
-  grid-template-columns: 484px auto;
-  gap: 148px;
+
+  &-content {
+    @include max-width;
+
+    padding: 0 0 137px 117px;
+    display: grid;
+    grid-template-columns: 484px auto;
+    gap: 148px;
+  }
 }
 
 .col {

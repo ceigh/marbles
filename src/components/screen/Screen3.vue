@@ -181,6 +181,7 @@ export default defineComponent({
 
 .shape {
   position: absolute;
+  width: 100%;
   z-index: -1;
 }
 
@@ -288,7 +289,7 @@ export default defineComponent({
     &-2 {
       align-items: flex-start;
       overflow-x: hidden;
-      max-width: 720px;
+      max-width: 100%;
     }
   }
 }

@@ -3,24 +3,26 @@
     class="screen"
     :style="{ background: `url('${assetsPath}img/pattern.svg')`}"
   >
-    <div class="col-1">
-      <div class="circle" />
-      <img
-        class="box"
-        :src="`${assetsPath}img/box.svg`"
-        alt="коробка"
-        loading="lazy"
-      >
-      <img
-        class="cards"
-        :src="`${assetsPath}img/cards.svg`"
-        alt="карты"
-        loading="lazy"
-      >
-    </div>
+    <div class="screen-content">
+      <div class="col-1">
+        <div class="circle" />
+        <img
+          class="box"
+          :src="`${assetsPath}img/box.svg`"
+          alt="коробка"
+          loading="lazy"
+        >
+        <img
+          class="cards"
+          :src="`${assetsPath}img/cards.svg`"
+          alt="карты"
+          loading="lazy"
+        >
+      </div>
 
-    <div class="col-2">
-      <app-buy />
+      <div class="col-2">
+        <app-buy />
+      </div>
     </div>
   </div>
 </template>
@@ -44,12 +46,16 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .screen {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 31px;
-  padding-bottom: 160px;
-  background-size: 1800px !important;
   background-position: -30px -20px !important;
+
+  &-content {
+    @include max-width;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 31px;
+    padding-bottom: 160px;
+  }
 }
 
 .col {

@@ -3,48 +3,49 @@
     id="order"
     class="screen"
   >
-    <div class="circles">
-      <div
-        v-for="i in 5"
-        :key="i"
-        class="circle"
-        :class="{ 'circle-highlight': i > 2 }"
-      />
-    </div>
-
-    <div class="col-1">
-      <div class="img-current-container">
-        <img
-          class="tick"
-          :class="{ 'tick-disabled': currentImg === 0 }"
-          :src="`${assetsPath}img/tick.svg`"
-          alt="<"
-          @click="incImg(-1)"
-        >
+    <div class="screen-content">
+      <div class="circles">
         <div
-          class="img-current"
-          :style="{ 'background-image': `url('${images[currentImg]}')` }"
+          v-for="i in 5"
+          :key="i"
+          class="circle"
+          :class="{ 'circle-highlight': i > 2 }"
         />
-        <img
-          class="tick"
-          :class="{ 'tick-disabled': currentImg === images.length - 1 }"
-          :src="`${assetsPath}img/tick.svg`"
-          alt=">"
-          @click="incImg(1)"
-        >
       </div>
 
-      <div class="img-all">
-        <img
-          v-for="(img, i) in images"
-          :key="i"
-          v-lazy="img"
-          class="img-all-img"
-          :class="{ 'img-all-img-current': currentImg === i }"
-          alt="фото"
-          @click="currentImg = i"
-        >
-      </div>
+      <div class="col-1">
+        <div class="img-current-container">
+          <img
+            class="tick"
+            :class="{ 'tick-disabled': currentImg === 0 }"
+            :src="`${assetsPath}img/tick.svg`"
+            alt="<"
+            @click="incImg(-1)"
+          >
+          <div
+            class="img-current"
+            :style="{ 'background-image': `url('${images[currentImg]}')` }"
+          />
+          <img
+            class="tick"
+            :class="{ 'tick-disabled': currentImg === images.length - 1 }"
+            :src="`${assetsPath}img/tick.svg`"
+            alt=">"
+            @click="incImg(1)"
+          >
+        </div>
+
+        <div class="img-all">
+          <img
+            v-for="(img, i) in images"
+            :key="i"
+            v-lazy="img"
+            class="img-all-img"
+            :class="{ 'img-all-img-current': currentImg === i }"
+            alt="фото"
+            @click="currentImg = i"
+          >
+        </div>
 
       <!--
       <div class="dots">
@@ -57,31 +58,32 @@
         />
       </div>
       -->
-    </div>
+      </div>
 
-    <div class="col-2">
-      <p class="heading">
-        Настольная игра МАРБЛС
-      </p>
-      <p class="desc">
-        Сделана в России, играют во всем мире
-      </p>
+      <div class="col-2">
+        <p class="heading">
+          Настольная игра МАРБЛС
+        </p>
+        <p class="desc">
+          Сделана в России, играют во всем мире
+        </p>
 
-      <app-buy />
+        <app-buy />
 
-      <div class="btn-other">
-        <app-external-link
-          class="btn btn-ozone"
-          href="https://ozon.ru"
-        >
-          Купить на OZON
-        </app-external-link>
-        <app-external-link
-          class="btn btn-wb"
-          href="https://wildberries.ru"
-        >
-          Купить на WB
-        </app-external-link>
+        <div class="btn-other">
+          <app-external-link
+            class="btn btn-ozone"
+            href="https://ozon.ru"
+          >
+            Купить на OZON
+          </app-external-link>
+          <app-external-link
+            class="btn btn-wb"
+            href="https://wildberries.ru"
+          >
+            Купить на WB
+          </app-external-link>
+        </div>
       </div>
     </div>
   </div>
@@ -136,12 +138,17 @@ export default defineComponent({
 <style lang="scss" scoped>
 .screen {
   position: relative;
-  padding: 0 0 86px 231px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 124px;
   background: $text-main;
   overflow-x: hidden;
+
+  &-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 124px;
+    padding: 0 0 86px 231px;
+
+    @include max-width;
+  }
 }
 
 .circle {
