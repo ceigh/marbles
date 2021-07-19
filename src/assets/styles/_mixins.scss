@@ -55,4 +55,9 @@
   height: 135px;
   object-fit: contain;
   filter: drop-shadow(-1px 10px 42px rgba(#000, 0.15));
+
+  @include media-breakpoint-down(md) {
+    width: 170px;
+    height: 38px;
+  }
 }

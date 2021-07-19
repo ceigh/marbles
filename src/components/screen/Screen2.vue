@@ -107,6 +107,10 @@ h3 {
 
   &-1 {
     top: -95px;
+
+    @include media-breakpoint-down(md) {
+      top: 10px;
+    }
   }
 }
 
