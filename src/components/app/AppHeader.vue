@@ -36,7 +36,8 @@ export default defineComponent({
     const scrolled = ref(false)
 
     function handleScroll (): void {
-      scrolled.value = window.scrollY >= 600
+      const breakpoint = window.innerWidth < 800 ? 300 : 600
+      scrolled.value = window.scrollY > breakpoint
     }
     onMounted(() => {
       window.addEventListener('scroll', handleScroll)
