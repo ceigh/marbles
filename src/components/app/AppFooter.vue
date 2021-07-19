@@ -27,10 +27,10 @@
       </div>
     </div>
 
-    <img
-      :src="`${assetsPath}img/line.svg`"
-      alt="линия"
-    >
+    <div
+      class="line"
+      :style="{ 'background-image': `url('${assetsPath}img/line.svg')` }"
+    />
   </div>
 </template>
 
@@ -86,10 +86,11 @@ export default defineComponent({
     gap: 479px;
     padding: 0 0 89px 165px;
   }
+}
 
-  img {
-    width: 100%;
-  }
+.line {
+  width: 100%;
+  height: 34px;
 }
 
 .col {
