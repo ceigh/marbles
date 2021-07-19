@@ -21,6 +21,7 @@ module.exports = {
       sass: {
         additionalData: `
 @use 'sass:math';
+@use 'sass:map';
 @import '${stylesPath}/variables';
 @import '${stylesPath}/mixins';
 `

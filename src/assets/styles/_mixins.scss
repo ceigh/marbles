@@ -1,3 +1,8 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+// https://getbootstrap.com/docs/5.0/layout/breakpoints/
+@import 'bootstrap/scss/mixins/breakpoints';
+
 /* fonts */
 @mixin font-bold {
   font-weight: 700;
@@ -13,10 +18,11 @@
 }
 
 @mixin max-width {
-  max-width: $xxl;
+  max-width: map.get($grid-breakpoints, 'xxl') + 40px;
   margin: 0 auto;
 }
 
+/* common */
 @mixin yellow-btn {
   background: $yellow;
   border: none;
