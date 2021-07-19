@@ -8,7 +8,7 @@
       :key="i"
       class="part"
       :class="`part-${i}`"
-      :src="`${assetsPath}img/part-${i}.png`"
+      :src="`${assetsPath}img/part-${i}.svg`"
       :alt="`часть ${i}`"
       loading="lazy"
     >
@@ -41,6 +41,7 @@ export default defineComponent({
   padding-top: 46px;
   position: relative;
   min-height: 550px;
+  overflow-x: clip;
 }
 
 h2 {
@@ -51,16 +52,20 @@ h2 {
 .part {
   z-index: -1;
   position: absolute;
+  width: 598px;
+  height: 135px;
+  object-fit: contain;
   filter: drop-shadow(-1px 10px 42px rgba(#000, 0.15));
 
   &-1 {
-    right: 0;
+    right: -100px;
     bottom: -30px;
   }
 
   &-2 {
-    left: 0;
-    top: -150px;
+    transform: rotate(-124deg);
+    left: -200px;
+    top: 90px;
   }
 }
 

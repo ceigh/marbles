@@ -84,8 +84,8 @@
 
         <img
           class="part"
-          :src="`${assetsPath}img/part-3.png`"
-          alt="part 3"
+          :src="`${assetsPath}img/part-1-yellow.svg`"
+          alt="часть 1"
           loading="lazy"
         >
       </div>
@@ -176,6 +176,7 @@ export default defineComponent({
 .screen {
   position: relative;
   margin-bottom: 220px;
+  overflow-x: clip;
 }
 
 .shape {
@@ -298,8 +299,12 @@ export default defineComponent({
 }
 
 .part {
+  width: 598px;
+  height: 135px;
+  object-fit: contain;
   position: absolute;
-  right: 0;
+  right: -50px;
   bottom: -90px;
+  filter: drop-shadow(-1px 10px 42px rgba(#000, 0.15));
 }
 </style>
