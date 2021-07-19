@@ -51,11 +51,8 @@ h2 {
 
 .part {
   z-index: -1;
-  position: absolute;
-  width: 598px;
-  height: 135px;
-  object-fit: contain;
-  filter: drop-shadow(-1px 10px 42px rgba(#000, 0.15));
+
+  @include part;
 
   &-1 {
     right: -100px;
