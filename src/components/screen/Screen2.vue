@@ -18,7 +18,10 @@
       :alt="`фигура ${i}`"
     >
 
-    <div class="cards">
+    <div
+      v-dragscroll.x
+      class="cards"
+    >
       <div
         v-for="(card, i) in cards"
         :key="i"
@@ -82,6 +85,11 @@ export default defineComponent({
   position: relative;
   padding-top: 55px;
   margin-bottom: 200px;
+
+  @include media-breakpoint-down(md) {
+    padding-top: 45px;
+    margin-bottom: 9px;
+  }
 }
 
 .users,
@@ -92,12 +100,25 @@ h3 {
 .users {
   filter: drop-shadow(0 23px 17px rgba($yellow, 0.22));
   margin-bottom: 20px;
+
+  @include media-breakpoint-down(md) {
+    $size: 44px;
+
+    width: $size;
+    height: $size;
+    margin-bottom: 10px;
+  }
 }
 
 h3 {
   max-width: 698px;
   text-align: center;
   margin-bottom: 60px;
+
+  @include media-breakpoint-down(md) {
+    max-width: 290px;
+    margin-bottom: 40px;
+  }
 }
 
 .shape {
@@ -109,7 +130,17 @@ h3 {
     top: -95px;
 
     @include media-breakpoint-down(md) {
-      top: 10px;
+      top: -20px;
+      height: 331px;
+      object-fit: none;
+      object-position: top;
+    }
+  }
+
+  &-2 {
+    @include media-breakpoint-down(md) {
+      height: 408px;
+      object-fit: none;
     }
   }
 }
@@ -120,10 +151,18 @@ h3 {
   background: $white;
   box-shadow: 0 0 17px rgba(176, 176, 176, 0.2);
   border-radius: $corner;
-  width: 287px;
+  flex: 0 0 287px;
+
+  @include media-breakpoint-down(md) {
+    flex: 0 0 160px;
+  }
 
   &:not(:last-child) {
     margin-right: 25px;
+
+    @include media-breakpoint-down(md) {
+      margin-right: 20px;
+    }
   }
 
   img {
@@ -132,6 +171,10 @@ h3 {
     object-fit: cover;
     border-top-left-radius: $corner;
     border-top-right-radius: $corner;
+
+    @include media-breakpoint-down(md) {
+      height: 104px;
+    }
   }
 
   p {
@@ -142,10 +185,23 @@ h3 {
   &s {
     display: flex;
     justify-content: center;
+    overflow-x: hidden;
+
+    @include media-breakpoint-down(md) {
+      padding: 0 25px;
+    }
+
+    @include media-breakpoint-down(sm) {
+      justify-content: flex-start;
+    }
   }
 
   &-meta {
     padding: 15px;
+
+    @include media-breakpoint-down(md) {
+      padding: 8px;
+    }
   }
 }
 </style>
