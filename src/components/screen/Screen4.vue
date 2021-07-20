@@ -3,16 +3,16 @@
     id="order"
     class="screen"
   >
-    <div class="screen-content">
-      <div class="circles">
-        <div
-          v-for="i in 5"
-          :key="i"
-          class="circle"
-          :class="{ 'circle-highlight': i > 2 }"
-        />
-      </div>
+    <div class="circles">
+      <div
+        v-for="i in 5"
+        :key="i"
+        class="circle"
+        :class="{ 'circle-highlight': i > 2 }"
+      />
+    </div>
 
+    <div class="screen-content">
       <div class="col-1">
         <div class="text-mobile">
           <h3>
@@ -148,6 +148,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .screen {
+  --size: 78px;
+
   position: relative;
   background: $text-main;
   overflow-x: hidden;
@@ -169,8 +171,6 @@ export default defineComponent({
 }
 
 .circle {
-  --size: 78px;
-
   width: var(--size);
   height: var(--size);
   background: #3a3a3a;
@@ -225,12 +225,6 @@ export default defineComponent({
     }
 
     .img {
-      --width: 442px;
-
-      @include media-breakpoint-down(md) {
-        --width: 100%;
-      }
-
       &-current {
         height: 494px;
         width: 100%;
@@ -244,8 +238,14 @@ export default defineComponent({
         }
 
         &-container {
+          --width: 442px;
+
           position: relative;
           width: var(--width);
+
+          @include media-breakpoint-down(md) {
+            --width: 100%;
+          }
 
           .tick {
             $spacing: 40px;
