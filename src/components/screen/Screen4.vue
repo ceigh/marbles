@@ -422,6 +422,7 @@ export default defineComponent({
 
   @include media-breakpoint-down(md) {
     height: 51px;
+    border-radius: 8px;
   }
 
   &-other {
@@ -429,6 +430,10 @@ export default defineComponent({
     grid-template-columns: 1fr 1fr;
     gap: 20px;
     max-width: $mw;
+
+    @include media-breakpoint-down(md) {
+      gap: 11px;
+    }
 
     a {
       display: flex;

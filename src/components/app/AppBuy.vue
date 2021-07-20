@@ -1,13 +1,15 @@
 <template>
   <div class="buy">
-    <p class="cost">
-      {{ costTotal }} ₽
-    </p>
-    <p class="delivery">
-      <span class="delivery-highlight">Бесплатная доставка</span>
-      <br>
-      до пункта выдачи СДЭК или Боксберри
-    </p>
+    <div class="head">
+      <p class="cost">
+        {{ costTotal }} ₽
+      </p>
+      <p class="delivery">
+        <span class="delivery-highlight">Бесплатная доставка</span>
+        <br>
+        до пункта выдачи СДЭК или Боксберри
+      </p>
+    </div>
 
     <div class="btn btn-quantity">
       <div class="btn-quantity-quantity">
@@ -81,17 +83,38 @@ export default defineComponent({
   color: $white;
 }
 
+.head {
+  @include media-breakpoint-down(md) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
 .cost {
   font-size: 60px;
   line-height: 90px;
 
   @include font-bold;
+
+  @include media-breakpoint-down(md) {
+    font-size: 27px;
+    line-height: 33px;
+    white-space: nowrap;
+    padding-right: 15px;
+  }
 }
 
 .delivery {
   font-size: 20px;
   line-height: 30px;
   margin-bottom: 50px;
+
+  @include media-breakpoint-down(md) {
+    font-size: 13px;
+    line-height: 19px;
+    flex: 0 1 150px;
+    margin-bottom: 10px;
+  }
 
   &-highlight {
     color: $yellow;
@@ -101,18 +124,28 @@ export default defineComponent({
 }
 
 .btn {
-  $corner: 11px;
-  $spacing: 20px;
   $mw: 380px;
+
+  --spacing: 20px;
+  --corner: 11px;
 
   height: 67px;
   max-width: $mw;
   font-size: 20px;
   line-height: 30px;
   user-select: none;
-  border-radius: $corner;
+  border-radius: var(--corner);
 
   @include font-bold;
+
+  @include media-breakpoint-down(md) {
+    --corner: 8px;
+    --spacing: 10px;
+
+    height: 51px;
+    font-size: 16px;
+    line-height: 19px;
+  }
 
   &-quantity {
     $border: 1px solid #777;
@@ -122,7 +155,7 @@ export default defineComponent({
     border: $border;
     background: rgba($text-main, 0.04);
     backdrop-filter: blur(20px);
-    margin-bottom: $spacing;
+    margin-bottom: var(--spacing);
 
     &-quantity {
       display: flex;
@@ -148,6 +181,10 @@ export default defineComponent({
 
         &:hover {
           background: $yellow;
+
+          @include media-breakpoint-down(md) {
+            background: $yellow !important;
+          }
         }
 
         &:active {
@@ -156,11 +193,11 @@ export default defineComponent({
 
         &:first-child {
           border-bottom: $border;
-          border-top-right-radius: $corner;
+          border-top-right-radius: var(--corner);
         }
 
         &:last-child {
-          border-bottom-right-radius: $corner;
+          border-bottom-right-radius: var(--corner);
         }
       }
     }
@@ -168,9 +205,15 @@ export default defineComponent({
 
   &-buy {
     width: 100%;
-    margin-bottom: $spacing;
+    margin-bottom: var(--spacing);
 
     @include yellow-btn;
+
+    @include media-breakpoint-down(md) {
+      &:hover {
+        background: rgba($yellow, 0.7);
+      }
+    }
   }
 }
 </style>
