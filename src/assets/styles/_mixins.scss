@@ -42,6 +42,11 @@
 
   &:hover {
     filter: drop-shadow(0 3px 26px rgba($yellow, 0.33));
+
+    @include media-breakpoint-down(md) {
+      filter: none;
+      background: $yellow-dark;
+    }
   }
 
   &:active {
