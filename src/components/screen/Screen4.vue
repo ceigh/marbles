@@ -14,6 +14,15 @@
       </div>
 
       <div class="col-1">
+        <div class="text-mobile">
+          <h3>
+            Настольная игра МАРБЛС
+          </h3>
+          <h4>
+            Сделана в России, играют во всем мире
+          </h4>
+        </div>
+
         <div class="img-current-container">
           <img
             class="tick"
@@ -148,19 +157,33 @@ export default defineComponent({
     padding: 0 0 86px 231px;
 
     @include max-width;
+
+    @include media-breakpoint-down(md) {
+      display: block;
+      padding: 0;
+      background: $white;
+    }
   }
 }
 
 .circle {
-  $size: 78px;
+  --size: 78px;
 
-  width: $size;
-  height: $size;
+  width: var(--size);
+  height: var(--size);
   background: #3a3a3a;
   border-radius: 100%;
 
   &:not(:last-child) {
     margin-bottom: 10px;
+
+    @include media-breakpoint-down(md) {
+      margin-bottom: 4px;
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    --size: 36px;
   }
 
   &-highlight {
@@ -170,12 +193,24 @@ export default defineComponent({
       drop-shadow(0 0 16px $yellow)
       drop-shadow(0 0 8px rgba($yellow, 0.4))
       drop-shadow(0 0 4px rgba($yellow, 0.25));
+
+    @include media-breakpoint-down(md) {
+      filter: none;
+      border-width: 2px;
+    }
   }
 
   &s {
     position: absolute;
-    left: math.div($size, -2);
+    left: calc(var(--size) / -2);
     top: 140px;
+
+    @include media-breakpoint-down(md) {
+      transform: rotate(90deg);
+      left: unset;
+      top: -40px;
+      right: -25px;
+    }
   }
 }
 
@@ -183,8 +218,16 @@ export default defineComponent({
   &-1 {
     padding-top: 139px;
 
+    @include media-breakpoint-down(md) {
+      padding: 40px 15px 30px;
+    }
+
     .img {
-      $width: 442px;
+      --width: 442px;
+
+      @include media-breakpoint-down(md) {
+        --width: 100%;
+      }
 
       &-current {
         height: 494px;
@@ -193,9 +236,14 @@ export default defineComponent({
         border-radius: 17px;
         background-size: cover;
 
+        @include media-breakpoint-down(md) {
+          height: 140px;
+          border-radius: 7px;
+        }
+
         &-container {
           position: relative;
-          width: $width;
+          width: var(--width);
 
           .tick {
             $spacing: 40px;
@@ -207,6 +255,10 @@ export default defineComponent({
             cursor: pointer;
 
             @include transition;
+
+            @include media-breakpoint-down(md) {
+              display: none;
+            }
 
             &:first-of-type {
               left: math.div($spacing, -1);
@@ -236,7 +288,7 @@ export default defineComponent({
       &-all {
         margin-top: 10px;
         display: flex;
-        width: $width;
+        width: var(--width);
         overflow-x: auto;
 
         &-img {
@@ -248,6 +300,11 @@ export default defineComponent({
           cursor: pointer;
 
           @include transition;
+
+          @include media-breakpoint-down(md) {
+            flex-basis: 50px;
+            height: 39px;
+          }
 
           &:not(:last-child) {
             margin-right: 10px;
@@ -272,6 +329,12 @@ export default defineComponent({
 
   &-2 {
     padding-top: 86px;
+
+    @include media-breakpoint-down(md) {
+      background: $text-main;
+      border-radius: 18px;
+      padding: 20px 15px 40px;
+    }
   }
 }
 
@@ -302,6 +365,30 @@ export default defineComponent({
   }
 }
 */
+
+.text-mobile {
+  display: none;
+
+  h3 {
+    max-width: 239px;
+  }
+
+  h4 {
+    max-width: 236px;
+    margin-bottom: 10px;
+  }
+
+  @include media-breakpoint-down(md) {
+    display: initial;
+  }
+}
+
+.heading,
+.desc {
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
 
 .heading {
   font-size: 52px;
