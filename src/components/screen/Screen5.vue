@@ -55,6 +55,20 @@
         loading="lazy"
       >
     </div>
+
+    <div
+      ref="cardsMobile"
+      v-dragscroll.x
+      class="cards cards-mobile"
+    >
+      <img
+        v-for="i in 20"
+        :key="i"
+        :src="`${assetsPath}img/card-${i % 2 ? 'front' : 'back'}.svg`"
+        alt="карта"
+        loading="lazy"
+      >
+    </div>
   </div>
 </template>
 
@@ -110,15 +124,21 @@ export default defineComponent({
     ]
 
     const cards = ref<HTMLDivElement>()
+    const cardsMobile = ref<HTMLDivElement>()
 
     let oldScrollY = 0
     function onScroll (): void {
       const cardsEl = cards.value
-      if (!cardsEl) return
+      const cardsElMobile = cardsMobile.value
+      if (!cardsEl || !cardsElMobile) return
 
       const { scrollY } = window
       const dir = oldScrollY > scrollY ? 1 : -1
-      cardsEl.scrollLeft -= dir * 5
+      const step = dir * 5
+
+      cardsEl.scrollLeft -= step
+      cardsElMobile.scrollLeft += step
+
       oldScrollY = scrollY
     }
 
@@ -126,9 +146,11 @@ export default defineComponent({
       window.addEventListener('scroll', onScroll)
 
       const cardsEl = cards.value
-      if (!cardsEl) return
+      const cardsElMobile = cardsMobile.value
+      if (!cardsEl || !cardsElMobile) return
       setTimeout(() => {
         cardsEl.scrollLeft = cardsEl.scrollWidth / 3
+        cardsElMobile.scrollLeft = 2 * cardsElMobile.scrollWidth / 3
       }, 500)
     })
 
@@ -137,7 +159,8 @@ export default defineComponent({
     return {
       assetsPath,
       benefits,
-      cards
+      cards,
+      cardsMobile
     }
   }
 })
@@ -148,11 +171,13 @@ export default defineComponent({
   --p: 12%;
 
   position: relative;
-  padding-bottom: 420px;
+  padding-bottom: 96px;
   background: $white;
 
   @include media-breakpoint-down(md) {
     --p: 15px;
+
+    padding-bottom: 0;
   }
 }
 
@@ -165,7 +190,7 @@ export default defineComponent({
 
   &-cards {
     display: flex;
-    margin-bottom: 140px;
+    margin-bottom: 117px;
     overflow-x: hidden;
     user-select: none;
     padding: 0 calc(var(--p) / 3) 0 var(--p);
@@ -298,11 +323,23 @@ export default defineComponent({
 }
 
 .cards {
-  padding: 96px 50px;
+  padding: 0 50px;
   display: flex;
   overflow-x: hidden;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+
+  @include media-breakpoint-down(md) {
+    padding: 40px 50px;
+    padding-bottom: 0;
+  }
+
+  &-mobile {
+    display: none;
+    padding-top: 13px;
+    padding-bottom: 40px;
+
+    @include media-breakpoint-down(md) {
+      display: flex;
+    }
+  }
 }
 </style>
