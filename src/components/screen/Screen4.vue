@@ -420,6 +420,10 @@ export default defineComponent({
 
   @include font-bold;
 
+  @include media-breakpoint-down(md) {
+    height: 51px;
+  }
+
   &-other {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -437,16 +441,26 @@ export default defineComponent({
       color: $white;
 
       @include transition;
+
+      @include media-breakpoint-down(md) {
+        font-size: 14px;
+        line-height: 17px;
+      }
     }
   }
 
   &-ozone {
+    $blue: #0069ff;
     $blue-dark: #0047ac;
 
-    background: #0069ff;
+    background: $blue;
 
     &:hover {
       background: $blue-dark;
+
+      @include media-breakpoint-down(md) {
+        background: rgba($blue, 0.5) !important;
+      }
     }
 
     &:active {
@@ -455,12 +469,17 @@ export default defineComponent({
   }
 
   &-wb {
+    $purple: #981393;
     $purple-dark: #6f0e6b;
 
-    background: #981393;
+    background: $purple;
 
     &:hover {
       background: $purple-dark;
+
+      @include media-breakpoint-down(md) {
+        background: rgba($purple, 0.5) !important;
+      }
     }
 
     &:active {
