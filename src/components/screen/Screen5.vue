@@ -35,7 +35,9 @@
           <p class="benefits-cards-card-num">
             {{ card.num }}
           </p>
-          <p>{{ card.item }}</p>
+          <p class="benefits-cards-card-text">
+            {{ card.item }}
+          </p>
         </div>
       </div>
     </div>
@@ -142,23 +144,36 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$padding-left: 12%;
-
 .screen {
+  --p: 12%;
+
   position: relative;
   padding-bottom: 420px;
   background: $white;
+
+  @include media-breakpoint-down(md) {
+    --p: 15px;
+  }
 }
 
 .benefits {
   padding-top: 100px;
+
+  @include media-breakpoint-down(md) {
+    padding-top: 40px;
+  }
 
   &-cards {
     display: flex;
     margin-bottom: 140px;
     overflow-x: hidden;
     user-select: none;
-    padding: 0 math.div($padding-left, 3) 0 $padding-left;
+    padding: 0 calc(var(--p) / 3) 0 var(--p);
+
+    @include media-breakpoint-down(md) {
+      margin-bottom: 40px;
+      padding: 0 var(--p);
+    }
 
     &-card {
       position: relative;
@@ -167,10 +182,20 @@ $padding-left: 12%;
       flex-shrink: 0;
       border-radius: 10px;
       color: $white;
-      padding: 104px 0 34px 10px;
+      padding: 104px 0 10px 10px;
+
+      @include media-breakpoint-down(md) {
+        width: 130px;
+        height: 133px;
+        padding: 66px 5px 5px 5px;
+      }
 
       &:not(:last-child) {
         margin-right: 20px;
+
+        @include media-breakpoint-down(md) {
+          margin-right: 15px;
+        }
       }
 
       p {
@@ -205,6 +230,18 @@ $padding-left: 12%;
         line-height: 33px;
 
         @include font-bold;
+
+        @include media-breakpoint-down(md) {
+          font-size: 32px;
+          line-height: 33px;
+        }
+      }
+
+      &-text {
+        @include media-breakpoint-down(md) {
+          font-size: 13px;
+          line-height: 14px;
+        }
       }
     }
   }
@@ -214,7 +251,11 @@ $padding-left: 12%;
   display: flex;
   align-items: flex-end;
   margin-bottom: 89px;
-  padding-left: $padding-left;
+  padding-left: var(--p);
+
+  @include media-breakpoint-down(md) {
+    margin-bottom: 50px;
+  }
 
   &-title {
     font-size: 52px;
@@ -222,6 +263,11 @@ $padding-left: 12%;
     user-select: none;
 
     @include font-bold;
+
+    @include media-breakpoint-down(md) {
+      font-size: 36px;
+      line-height: 43px;
+    }
   }
 
   &-subtitle {
@@ -229,10 +275,25 @@ $padding-left: 12%;
     line-height: 24px;
 
     @include font-medium;
+
+    @include media-breakpoint-down(md) {
+      font-size: 22px;
+      line-height: 0;
+      font-weight: normal;
+    }
   }
 
   img {
     margin-right: 41px;
+
+    @include media-breakpoint-down(md) {
+      width: 66px;
+      height: 43px;
+      margin: 0;
+      position: absolute;
+      right: 15px;
+      top: 49px;
+    }
   }
 }
 
