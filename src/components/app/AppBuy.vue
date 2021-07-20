@@ -124,13 +124,12 @@ export default defineComponent({
 }
 
 .btn {
-  $mw: 380px;
-
   --spacing: 20px;
   --corner: 11px;
+  --width: 380px;
 
   height: 67px;
-  max-width: $mw;
+  max-width: var(--width);
   font-size: 20px;
   line-height: 30px;
   user-select: none;
@@ -141,6 +140,7 @@ export default defineComponent({
   @include media-breakpoint-down(md) {
     --corner: 8px;
     --spacing: 10px;
+    --width: 289px;
 
     height: 51px;
     font-size: 16px;

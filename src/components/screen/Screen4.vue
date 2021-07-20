@@ -70,28 +70,30 @@
       </div>
 
       <div class="col-2">
-        <p class="heading">
-          Настольная игра МАРБЛС
-        </p>
-        <p class="desc">
-          Сделана в России, играют во всем мире
-        </p>
+        <div class="col-2-content">
+          <p class="heading">
+            Настольная игра МАРБЛС
+          </p>
+          <p class="desc">
+            Сделана в России, играют во всем мире
+          </p>
 
-        <app-buy />
+          <app-buy />
 
-        <div class="btn-other">
-          <app-external-link
-            class="btn btn-ozone"
-            href="https://ozon.ru"
-          >
-            Купить на OZON
-          </app-external-link>
-          <app-external-link
-            class="btn btn-wb"
-            href="https://wildberries.ru"
-          >
-            Купить на WB
-          </app-external-link>
+          <div class="btn-other">
+            <app-external-link
+              class="btn btn-ozone"
+              href="https://ozon.ru"
+            >
+              Купить на OZON
+            </app-external-link>
+            <app-external-link
+              class="btn btn-wb"
+              href="https://wildberries.ru"
+            >
+              Купить на WB
+            </app-external-link>
+          </div>
         </div>
       </div>
     </div>
@@ -335,6 +337,13 @@ export default defineComponent({
       border-radius: 18px;
       padding: 20px 15px 40px;
     }
+
+    &-content {
+      @include media-breakpoint-down(md) {
+        max-width: 289px;
+        margin: 0 auto;
+      }
+    }
   }
 }
 
@@ -409,10 +418,7 @@ export default defineComponent({
 }
 
 .btn {
-  $mw: 380px;
-
   height: 67px;
-  max-width: $mw;
   font-size: 20px;
   line-height: 30px;
   user-select: none;
@@ -426,12 +432,16 @@ export default defineComponent({
   }
 
   &-other {
+    --width: 380px;
+
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    max-width: $mw;
+    max-width: var(--width);
 
     @include media-breakpoint-down(md) {
+      --width: 289px;
+
       gap: 11px;
     }
 
