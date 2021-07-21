@@ -8,6 +8,14 @@
       Задавайте их нам!
     </h4>
 
+    <div class="circles">
+      <div
+        v-for="i in 3"
+        :key="i"
+        class="circle"
+      />
+    </div>
+
     <div class="bottom">
       <div>
         <app-external-link
@@ -65,12 +73,51 @@ export default defineComponent({
 
   @include max-width;
 
+  @include media-breakpoint-down(md) {
+    position: relative;
+    padding: 40px 15px;
+    max-width: 320px;
+  }
+
   h3 {
     margin-bottom: 10px;
+
+    @include media-breakpoint-down(md) {
+      margin: 0;
+    }
   }
 
   h4 {
     margin-bottom: 40px;
+
+    @include media-breakpoint-down(md) {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.circle {
+  $size: 31px;
+
+  width: $size;
+  height: $size;
+  border-radius: 100%;
+  border: 1.5px solid #cdcdcd;
+
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+
+  &s {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    right: -10px;
+    top: 68px;
+
+    @include media-breakpoint-down(md) {
+      display: inline-flex;
+    }
   }
 }
 
@@ -79,9 +126,17 @@ export default defineComponent({
   grid-template-columns: auto 1fr;
   gap: 159px;
 
+  @include media-breakpoint-down(md) {
+    display: block;
+  }
+
   p {
     max-width: 380px;
     color: $text-gray;
+
+    @include media-breakpoint-down(md) {
+      margin-top: 20px;
+    }
   }
 }
 
@@ -100,9 +155,19 @@ a {
 
   @include transition;
 
+  @include media-breakpoint-down(md) {
+    padding: 7px 8px;
+    font-size: 13px;
+    line-height: 19px;
+  }
+
   &:hover {
     color: $white;
     background: var(--color);
+
+    @include media-breakpoint-down(md) {
+      background: var(--color) !important;
+    }
   }
 
   &:active {
@@ -111,10 +176,22 @@ a {
 
   &:not(:last-child) {
     margin-right: 40px;
+
+    @include media-breakpoint-down(md) {
+      margin-right: 15px;
+    }
   }
 
   img {
     margin-right: 9px;
+
+    @include media-breakpoint-down(md) {
+      $size: 24px;
+
+      width: $size;
+      height: $size;
+      margin-right: 7px;
+    }
   }
 
   &.tg {
