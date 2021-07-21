@@ -1,6 +1,5 @@
 <template>
   <div
-    id="order"
     class="screen"
   >
     <div class="circles">
@@ -69,7 +68,10 @@
       -->
       </div>
 
-      <div class="col-2">
+      <div
+        id="order"
+        class="col-2"
+      >
         <div class="col-2-content">
           <p class="heading">
             Настольная игра МАРБЛС

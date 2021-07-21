@@ -30,13 +30,14 @@
 
 <script lang="ts">
 import { ref, onMounted, onUnmounted, defineComponent } from 'vue'
+import { breakpoints } from '../../const.json'
 
 export default defineComponent({
   setup () {
     const scrolled = ref(false)
 
     function handleScroll (): void {
-      const breakpoint = window.innerWidth < 800 ? 300 : 600
+      const breakpoint = window.innerWidth < breakpoints.md ? 300 : 600
       scrolled.value = window.scrollY > breakpoint
     }
     onMounted(() => {

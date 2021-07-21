@@ -50,7 +50,7 @@
       <img
         v-for="i in 20"
         :key="i"
-        :src="`${assetsPath}img/card-${i % 2 ? 'front' : 'back'}.svg`"
+        v-lazy="`${assetsPath}img/card-${i % 2 ? 'front' : 'back'}.svg`"
         alt="карта"
         loading="lazy"
       >
@@ -64,7 +64,7 @@
       <img
         v-for="i in 20"
         :key="i"
-        :src="`${assetsPath}img/card-${i % 2 ? 'front' : 'back'}.svg`"
+        v-lazy="`${assetsPath}img/card-${i % 2 ? 'front' : 'back'}.svg`"
         alt="карта"
         loading="lazy"
       >
@@ -74,6 +74,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
+import { breakpoints } from '../../const.json'
 
 interface Benefit {
   img: string
@@ -129,21 +130,18 @@ export default defineComponent({
     let oldScrollY = 0
     function onScroll (): void {
       const cardsEl = cards.value
-      const cardsElMobile = cardsMobile.value
-      if (!cardsEl || !cardsElMobile) return
+      if (!cardsEl) return
 
       const { scrollY } = window
       const dir = oldScrollY > scrollY ? 1 : -1
-      const step = dir * 5
-
-      cardsEl.scrollLeft -= step
-      cardsElMobile.scrollLeft += step
-
+      cardsEl.scrollLeft -= dir * 5
       oldScrollY = scrollY
     }
 
     onMounted(() => {
-      window.addEventListener('scroll', onScroll)
+      if (window.innerWidth >= breakpoints.md) {
+        window.addEventListener('scroll', onScroll)
+      }
 
       const cardsEl = cards.value
       const cardsElMobile = cardsMobile.value
@@ -330,6 +328,17 @@ export default defineComponent({
   @include media-breakpoint-down(md) {
     padding: 40px 50px;
     padding-bottom: 0;
+  }
+
+  img {
+    flex: 0 0 255px;
+    height: 354px;
+    object-fit: contain;
+
+    @include media-breakpoint-down(md) {
+      flex-basis: 145px;
+      height: 208px;
+    }
   }
 
   &-mobile {
