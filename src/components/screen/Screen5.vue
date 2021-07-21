@@ -73,7 +73,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
+import { defineComponent, ref, onMounted, onUnmounted, computed } from 'vue'
 import { breakpoints } from '../../const.json'
 
 interface Benefit {
@@ -81,8 +81,6 @@ interface Benefit {
   num: string
   item: string
 }
-
-const { md } = breakpoints
 
 export default defineComponent({
   setup () {
@@ -126,11 +124,18 @@ export default defineComponent({
       }
     ]
 
+    const windowWidth = ref(window.innerWidth)
+    function onResize (): void { windowWidth.value = window.innerWidth }
+
+    const dragscrollActive = computed(() => windowWidth.value >= breakpoints.md)
+
     const cards = ref<HTMLDivElement>()
     const cardsMobile = ref<HTMLDivElement>()
 
     let oldScrollY = 0
     function onScroll (): void {
+      if (!dragscrollActive.value) return
+
       const cardsEl = cards.value
       if (!cardsEl) return
 
@@ -141,9 +146,8 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      if (window.innerWidth >= md) {
-        window.addEventListener('scroll', onScroll)
-      }
+      window.addEventListener('scroll', onScroll)
+      window.addEventListener('resize', onResize)
 
       const cardsEl = cards.value
       const cardsElMobile = cardsMobile.value
@@ -154,9 +158,10 @@ export default defineComponent({
       }, 500)
     })
 
-    onUnmounted(() => window.removeEventListener('scroll', onScroll))
-
-    const dragscrollActive = window.innerWidth >= md
+    onUnmounted(() => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onResize)
+    })
 
     return {
       assetsPath,

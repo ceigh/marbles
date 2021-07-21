@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, computed, onMounted, onUnmounted } from 'vue'
 import { breakpoints } from '../../const.json'
 
 interface Card {
@@ -73,7 +73,16 @@ export default defineComponent({
       }
     ]
 
-    const dragscrollActive = window.innerWidth >= breakpoints.md
+    const windowWidth = ref(window.innerWidth)
+    const dragscrollActive = computed(() => windowWidth.value >= breakpoints.md)
+
+    function onResize (): void { windowWidth.value = window.innerWidth }
+    onMounted(() => {
+      window.addEventListener('resize', onResize)
+    })
+    onUnmounted(() => {
+      window.removeEventListener('resize', onResize)
+    })
 
     return {
       assetsPath,

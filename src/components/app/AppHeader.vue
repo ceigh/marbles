@@ -30,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { ref, onMounted, onUnmounted, defineComponent } from 'vue'
+import { ref, computed, onMounted, onUnmounted, defineComponent } from 'vue'
 import { breakpoints } from '../../const.json'
 
 export default defineComponent({
@@ -38,17 +38,24 @@ export default defineComponent({
     const scrolled = ref(false)
     const scrolledShow = ref(false)
 
-    const breakpoint = window.innerWidth < breakpoints.md ? 300 : 600
-    function handleScroll (): void {
-      const isScrolled = window.scrollY > breakpoint
+    const windowWidth = ref(window.innerWidth)
+    const breakpoint = computed(() => windowWidth.value < breakpoints.md ? 300 : 600)
+
+    function onScroll (): void {
+      const isScrolled = window.scrollY > breakpoint.value
       scrolled.value = isScrolled
       setTimeout(() => { scrolledShow.value = isScrolled }, 10)
     }
+
+    function onResize (): void { windowWidth.value = window.innerWidth }
+
     onMounted(() => {
-      window.addEventListener('scroll', handleScroll)
+      window.addEventListener('scroll', onScroll)
+      window.addEventListener('resize', onResize)
     })
     onUnmounted(() => {
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onResize)
     })
 
     return {
