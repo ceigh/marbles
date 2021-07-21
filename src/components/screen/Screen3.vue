@@ -51,7 +51,7 @@
         <h3>Отзывы игроков</h3>
 
         <div
-          v-dragscroll.x
+          v-dragscroll.x.pass
           class="reviews-2"
         >
           <div

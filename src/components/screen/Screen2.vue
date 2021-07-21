@@ -19,7 +19,7 @@
     >
 
     <div
-      v-dragscroll.x
+      v-dragscroll.x.pass
       class="cards"
     >
       <div

@@ -19,7 +19,7 @@
       </div>
 
       <div
-        v-dragscroll.x
+        v-dragscroll.x.pass
         class="benefits-cards"
       >
         <div
@@ -44,7 +44,7 @@
 
     <div
       ref="cards"
-      v-dragscroll.x
+      v-dragscroll.x.pass
       class="cards"
     >
       <img
@@ -58,7 +58,7 @@
 
     <div
       ref="cardsMobile"
-      v-dragscroll.x
+      v-dragscroll.x.pass
       class="cards cards-mobile"
     >
       <img
