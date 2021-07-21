@@ -31,33 +31,35 @@
       </div>
 
       <div class="col-2">
-        <div class="cost">
-          <img
-            :src="`${assetsPath}img/gift.svg`"
-            alt="подарок"
-            loading="lazy"
-          >
-          <p>750 ₽ + 750 ₽</p>
+        <div class="col-2-content">
+          <div class="cost">
+            <img
+              :src="`${assetsPath}img/gift.svg`"
+              alt="подарок"
+              loading="lazy"
+            >
+            <p>750 ₽ + 750 ₽</p>
+          </div>
+
+          <h3>Зовите друзей!</h3>
+          <p class="desc">
+            После покупки вашими друзьями игры МАРБЛС мы вернем им 750 рублей.
+            Но и вы тоже получите 750 рублей удобным для вас способом
+          </p>
+
+          <p class="how">
+            КАК ПОЛУЧИТЬ?
+          </p>
+
+          <ol>
+            <li
+              v-for="(step, i) in steps"
+              :key="i"
+            >
+              {{ step }}
+            </li>
+          </ol>
         </div>
-
-        <h3>Зовите друзей!</h3>
-        <p class="desc">
-          После покупки вашими друзьями игры МАРБЛС мы вернем им 750 рублей.
-          Но и вы тоже получите 750 рублей удобным для вас способом
-        </p>
-
-        <p class="how">
-          КАК ПОЛУЧИТЬ?
-        </p>
-
-        <ol>
-          <li
-            v-for="(step, i) in steps"
-            :key="i"
-          >
-            {{ step }}
-          </li>
-        </ol>
       </div>
     </div>
   </div>
@@ -98,6 +100,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 $bg: linear-gradient(149.32deg, $yellow 31.34%, #fada08 87.62%);
+$form-mobile-corner: 17px;
 
 .screen {
   background: $bg;
@@ -135,7 +138,23 @@ $bg: linear-gradient(149.32deg, $yellow 31.34%, #fada08 87.62%);
 
     @include media-breakpoint-down(md) {
       background: $bg;
-      padding: 40px 0 36px;
+      padding: 40px 15px 36px;
+      position: relative;
+
+      &-content {
+        margin: 0 auto;
+        max-width: 290px;
+      }
+
+      &::before {
+        content: '';
+        background: $yellow;
+        width: 100%;
+        height: $form-mobile-corner;
+        position: absolute;
+        top: -1 * $form-mobile-corner;
+        left: 0;
+      }
     }
 
     .cost {
@@ -144,11 +163,20 @@ $bg: linear-gradient(149.32deg, $yellow 31.34%, #fada08 87.62%);
       align-items: center;
       margin-bottom: 60px;
 
-      img {
-        $size: 82px;
+      @include media-breakpoint-down(md) {
+        display: flex;
+        margin-bottom: 30px;
+      }
 
-        width: $size;
-        height: $size;
+      img {
+        --size: 82px;
+
+        width: var(--size);
+        height: var(--size);
+
+        @include media-breakpoint-down(md) {
+          --size: 44px;
+        }
       }
 
       p {
@@ -157,17 +185,31 @@ $bg: linear-gradient(149.32deg, $yellow 31.34%, #fada08 87.62%);
         margin-top: 32px;
 
         @include font-bold;
+
+        @include media-breakpoint-down(md) {
+          font-size: 36px;
+          line-height: 43px;
+          margin-top: 11px;
+        }
       }
     }
 
     .desc {
       max-width: 500px;
       margin-top: 10px;
+
+      @include media-breakpoint-down(md) {
+        margin-top: 0;
+      }
     }
 
     .how {
       margin: 30px 0;
       letter-spacing: 0.11em;
+
+      @include media-breakpoint-down(md) {
+        margin: 20px 0;
+      }
     }
 
     ol {
@@ -213,7 +255,7 @@ form {
   z-index: 1;
 
   @include media-breakpoint-down(md) {
-    border-radius: 17px;
+    border-radius: $form-mobile-corner;
     padding: 40px 15px;
 
     .form-content {
