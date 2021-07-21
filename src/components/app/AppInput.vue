@@ -46,6 +46,11 @@ input {
 
   @include transition;
 
+  @include media-breakpoint-down(md) {
+    height: 51px;
+    min-width: 290px;
+  }
+
   &::placeholder {
     color: #bbb;
     opacity: 1;

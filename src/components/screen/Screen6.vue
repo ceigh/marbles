@@ -6,25 +6,27 @@
           :style="`--bg: url('${assetsPath}img/noise.gif')`"
           @submit.prevent="onSubmit"
         >
-          <h4>
-            Скоро мы запустим игру в онлайне, чтобы вы смогли играть
-            и доигрывать начатые в оффлайне партии
-          </h4>
+          <div class="form-content">
+            <h4>
+              Скоро мы запустим игру в онлайне, чтобы вы смогли играть
+              и доигрывать начатые в оффлайне партии
+            </h4>
 
-          <p class="subtext">
-            Подпишитесь, чтобы узнать об этом:
-          </p>
+            <p class="subtext">
+              Подпишитесь, чтобы узнать об этом:
+            </p>
 
-          <app-input
-            v-model="email"
-            placeholder="Ваш Email"
-            type="email"
-            required
-          />
+            <app-input
+              v-model="email"
+              placeholder="Ваш Email"
+              type="email"
+              required
+            />
 
-          <button type="submit">
-            Подписаться
-          </button>
+            <button type="submit">
+              Подписаться
+            </button>
+          </div>
         </form>
       </div>
 
@@ -95,8 +97,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+$bg: linear-gradient(149.32deg, $yellow 31.34%, #fada08 87.62%);
+
 .screen {
-  background: linear-gradient(149.32deg, $yellow 31.34%, #fada08 87.62%);
+  background: $bg;
+
+  @include media-breakpoint-down(md) {
+    background: none;
+  }
 
   &-content {
     @include max-width;
@@ -105,16 +113,30 @@ export default defineComponent({
     display: grid;
     grid-template-columns: 484px auto;
     gap: 148px;
+
+    @include media-breakpoint-down(md) {
+      display: block;
+      padding: 0;
+    }
   }
 }
 
 .col {
   &-1 {
     padding-top: 189px;
+
+    @include media-breakpoint-down(md) {
+      padding-top: 0;
+    }
   }
 
   &-2 {
     padding-top: 105px;
+
+    @include media-breakpoint-down(md) {
+      background: $bg;
+      padding: 40px 0 36px;
+    }
 
     .cost {
       display: inline-flex;
@@ -190,6 +212,16 @@ form {
   position: relative;
   z-index: 1;
 
+  @include media-breakpoint-down(md) {
+    border-radius: 17px;
+    padding: 40px 15px;
+
+    .form-content {
+      margin: 0 auto;
+      max-width: 290px;
+    }
+  }
+
   &::before,
   &::after {
     border-radius: inherit;
@@ -205,6 +237,10 @@ form {
     opacity: 0.3;
     z-index: -1;
     background: var(--bg);
+
+    @include media-breakpoint-down(md) {
+      opacity: 0.5;
+    }
   }
 
   &::after {
@@ -220,9 +256,15 @@ form {
 
   .subtext {
     margin-bottom: 32px;
+
+    @include media-breakpoint-down(md) {
+      margin-bottom: 10px;
+    }
   }
 
   button {
+    $blue-dark: #003a75;
+
     margin-top: 10px;
     height: 75px;
     width: 349px;
@@ -235,12 +277,23 @@ form {
     @include font-bold;
     @include transition;
 
+    @include media-breakpoint-down(md) {
+      width: 290px;
+      height: 51px;
+      padding: 16px 90px;
+    }
+
     &:hover {
       box-shadow: 0 3px 26px rgba($blue, 0.33);
+
+      @include media-breakpoint-down(md) {
+        box-shadow: none;
+        background: $blue-dark !important;
+      }
     }
 
     &:active {
-      background: #003a75;
+      background: $blue-dark;
     }
   }
 }
