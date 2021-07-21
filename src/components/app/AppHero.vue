@@ -39,6 +39,7 @@ video {
 
   @include media-breakpoint-down(md) {
     height: 299px;
+    pointer-events: initial;
   }
 }
 </style>
