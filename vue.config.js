@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin')
 
 const { env } = process
-const publicPath = env.NODE_ENV === 'production' ? '/marbles/' : '/'
+const publicPath = env.NODE_ENV === 'production' ? env.MB_PUBLIC_PATH : '/'
 env.VUE_APP_ASSETS = `${env.MB_ROOT}${publicPath}`
 
 const stylesPath = './src/assets/styles'
