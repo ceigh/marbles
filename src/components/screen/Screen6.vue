@@ -276,17 +276,16 @@ form {
   }
 
   &::before {
-    opacity: 0.3;
     z-index: -1;
-    background: var(--bg);
+    background: rgba(#fff, 0.3);
 
     @include media-breakpoint-down(md) {
-      opacity: 0.5;
+      background: rgba(#fff, 0.5);
     }
   }
 
   &::after {
-    background: #fff;
+    background: var(--bg);
     z-index: -2;
     filter: drop-shadow(0 12px 47px rgba(#000, 0.13));
   }
