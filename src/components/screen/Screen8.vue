@@ -3,11 +3,6 @@
     id="questions"
     class="screen"
   >
-    <h3>У вас есть вопросы по игре или правилам?</h3>
-    <h4>
-      Задавайте их нам!
-    </h4>
-
     <div class="circles">
       <div
         v-for="i in 3"
@@ -16,35 +11,42 @@
       />
     </div>
 
-    <div class="bottom">
-      <div>
-        <app-external-link
-          class="tg"
-          :href="`https://t.me/${tg}`"
-        >
-          <img
-            :src="`${assetsPath}img/telegram.svg`"
-            alt="telegram"
-            loading="lazy"
-          >
-          <span>@{{ tg }}</span>
-        </app-external-link>
+    <div class="screen-content">
+      <h3>У вас есть вопросы по игре или правилам?</h3>
+      <h4>
+        Задавайте их нам!
+      </h4>
 
-        <a
-          class="email"
-          :href="`mailto:${email}`"
-        >
-          <img
-            :src="`${assetsPath}img/email.svg`"
-            alt="email"
-            loading="lazy"
+      <div class="bottom">
+        <div>
+          <app-external-link
+            class="tg"
+            :href="`https://t.me/${tg}`"
           >
-          <span>{{ email }}</span>
-        </a>
-      </div>
+            <img
+              :src="`${assetsPath}img/telegram.svg`"
+              alt="telegram"
+              loading="lazy"
+            >
+            <span>@{{ tg }}</span>
+          </app-external-link>
 
-      <div>
-        <p>г. Москва, ул. Мясницкая 13с18, здание с вывеской ФРИИ, Марблс</p>
+          <a
+            class="email"
+            :href="`mailto:${email}`"
+          >
+            <img
+              :src="`${assetsPath}img/email.svg`"
+              alt="email"
+              loading="lazy"
+            >
+            <span>{{ email }}</span>
+          </a>
+        </div>
+
+        <div>
+          <p>г. Москва, ул. Мясницкая 13с18, здание с вывеской ФРИИ, Марблс</p>
+        </div>
       </div>
     </div>
   </div>
@@ -69,14 +71,19 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .screen {
-  padding: 100px 0 94px 165px;
+  position: relative;
+  overflow-x: hidden;
 
-  @include max-width;
+  &-content {
+    @include max-width;
 
-  @include media-breakpoint-down(md) {
-    position: relative;
-    padding: 40px 15px;
-    max-width: 320px;
+    padding: 100px 0 94px 165px;
+
+    @include media-breakpoint-down(md) {
+      position: relative;
+      padding: 40px 15px;
+      max-width: 320px;
+    }
   }
 
   h3 {
