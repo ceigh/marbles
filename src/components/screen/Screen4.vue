@@ -23,24 +23,24 @@
         </div>
 
         <div class="img-current-container">
-          <img
+          <button
             class="tick"
-            :class="{ 'tick-disabled': currentImg === 0 }"
-            :src="`${assetsPath}img/tick.svg`"
+            :disabled="currentImg === 0"
+            :style="{ background: `url('${assetsPath}img/tick.svg')` }"
             alt="<"
             @click="incImg(-1)"
-          >
+          />
           <div
             class="img-current"
             :style="{ 'background-image': `url('${images[currentImg]}')` }"
           />
-          <img
+          <button
             class="tick"
-            :class="{ 'tick-disabled': currentImg === images.length - 1 }"
-            :src="`${assetsPath}img/tick.svg`"
+            :disabled="currentImg === images.length - 1"
+            :style="{ background: `url('${assetsPath}img/tick.svg')` }"
             alt=">"
             @click="incImg(1)"
-          >
+          />
         </div>
 
         <div class="img-all">
@@ -251,12 +251,17 @@ export default defineComponent({
 
           .tick {
             $spacing: 40px;
+            $size: 24px;
 
+            width: $size;
+            height: $size;
+            background-repeat: no-repeat !important;
+            background-position: center !important;
+            background-size: contain !important;
+            border: none;
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            pointer-events: auto;
-            cursor: pointer;
 
             @include transition;
 
@@ -281,7 +286,7 @@ export default defineComponent({
               opacity: 0.5;
             }
 
-            &-disabled {
+            &[disabled] {
               opacity: 0.3 !important;
               cursor: initial;
             }
