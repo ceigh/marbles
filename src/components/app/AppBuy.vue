@@ -1,5 +1,8 @@
 <template>
-  <div class="buy">
+  <div
+    class="buy"
+    :class="{ 'buy-second': second }"
+  >
     <div class="head">
       <p class="cost">
         {{ costTotal }} ₽
@@ -38,6 +41,13 @@
 import { defineComponent, ref, computed } from 'vue'
 
 export default defineComponent({
+  props: {
+    second: {
+      type: Boolean,
+      default: false
+    }
+  },
+
   setup () {
     const quantity = ref(1)
     const quantityStr = computed(() => {
@@ -81,6 +91,23 @@ export default defineComponent({
 <style lang="scss" scoped>
 .buy {
   color: $white;
+
+  &-second {
+    @include media-breakpoint-down(md) {
+      .head {
+        display: block;
+        padding-left: 50%;
+
+        .cost {
+          padding: 0;
+        }
+
+        .delivery {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
 }
 
 .head {
@@ -110,7 +137,7 @@ export default defineComponent({
   margin-bottom: 50px;
 
   @include media-breakpoint-down(md) {
-    font-size: 13px;
+    font-size: 12px;
     line-height: 19px;
     flex: 0 1 150px;
     margin-bottom: 10px;

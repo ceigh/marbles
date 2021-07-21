@@ -138,7 +138,7 @@ $form-mobile-corner: 17px;
 
     @include media-breakpoint-down(md) {
       background: $bg;
-      padding: 40px 15px 36px;
+      padding: 40px 15px 60px;
       position: relative;
 
       &-content {
