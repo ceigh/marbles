@@ -100,10 +100,10 @@ export default defineComponent({
     }
 
     .circle {
-      $size: 509px;
+      --size: 509px;
 
-      width: $size;
-      height: $size;
+      width: var(--size);
+      height: var(--size);
       border-radius: 100%;
       border: 6px solid $yellow;
       filter:
@@ -115,7 +115,14 @@ export default defineComponent({
       top: 65px;
 
       @include media-breakpoint-down(md) {
-        display: none;
+        --size: 52px;
+
+        filter: blur(74px);
+        background: $yellow;
+        border: none;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
       }
     }
 
