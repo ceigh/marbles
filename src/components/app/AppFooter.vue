@@ -85,6 +85,13 @@ export default defineComponent({
     grid-template-columns: auto 1fr;
     gap: 479px;
     padding: 0 0 89px 165px;
+
+    @include media-breakpoint-down(md) {
+      padding: 15px;
+      gap: 20px;
+      grid-template-columns: auto auto;
+      max-width: 320px;
+    }
   }
 }
 
@@ -97,28 +104,57 @@ export default defineComponent({
   &-1 {
     padding-top: 70px;
 
+    @include media-breakpoint-down(md) {
+      padding-top: 0;
+    }
+
+    a,
+    p {
+      color: $gray;
+    }
+
     a {
       font-size: 50px;
-      color: $gray;
       text-decoration: none;
       margin-bottom: 10px;
       user-select: none;
 
       @include font-bold;
+
+      @include media-breakpoint-down(md) {
+        font-size: 29px;
+        line-height: 34px;
+      }
     }
 
     p {
-      color: $gray;
       max-width: 285px;
+
+      @include media-breakpoint-down(md) {
+        font-size: 8px;
+        line-height: 12px;
+      }
     }
   }
 
   &-2 {
     padding-top: 85px;
 
+    @include media-breakpoint-down(md) {
+      padding-top: 0;
+    }
+
     div {
+      @include media-breakpoint-down(md) {
+        @include p2;
+      }
+
       &:not(:last-child) {
         margin-bottom: 10px;
+
+        @include media-breakpoint-down(md) {
+          margin-bottom: 3px;
+        }
       }
     }
 
