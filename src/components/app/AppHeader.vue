@@ -1,7 +1,8 @@
 <template>
   <div
     class="header"
-    :class="{ 'header-black': scrolled }"
+    :class="{ 'header-black': scrolled, 'header-scrolled': scrolled,
+              'header-scrolled-show': scrolledShow }"
   >
     <div class="header-content">
       <a
@@ -35,10 +36,13 @@ import { breakpoints } from '../../const.json'
 export default defineComponent({
   setup () {
     const scrolled = ref(false)
+    const scrolledShow = ref(false)
 
+    const breakpoint = window.innerWidth < breakpoints.md ? 300 : 600
     function handleScroll (): void {
-      const breakpoint = window.innerWidth < breakpoints.md ? 300 : 600
-      scrolled.value = window.scrollY > breakpoint
+      const isScrolled = window.scrollY > breakpoint
+      scrolled.value = isScrolled
+      setTimeout(() => { scrolledShow.value = isScrolled }, 10)
     }
     onMounted(() => {
       window.addEventListener('scroll', handleScroll)
@@ -49,7 +53,8 @@ export default defineComponent({
 
     return {
       publicPath: process.env.BASE_URL,
-      scrolled
+      scrolled,
+      scrolledShow
     }
   }
 })
@@ -57,8 +62,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .header {
-  position: fixed;
-  // position: absolute;
+  position: absolute;
   top: 0;
   width: 100%;
   background:
@@ -70,7 +74,16 @@ export default defineComponent({
   color: #fff;
   z-index: 2;
 
-  @include transition;
+  &-scrolled {
+    position: fixed;
+    top: -80px;
+
+    &-show {
+      top: 0;
+
+      @include transition;
+    }
+  }
 
   &-content {
     display: flex;
