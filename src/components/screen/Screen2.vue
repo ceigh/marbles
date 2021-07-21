@@ -19,7 +19,7 @@
     >
 
     <div
-      v-dragscroll.x.pass
+      v-dragscroll.x="{ active: dragscrollActive }"
       class="cards"
     >
       <div
@@ -42,6 +42,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { breakpoints } from '../../const.json'
 
 interface Card {
   img: string
@@ -72,9 +73,12 @@ export default defineComponent({
       }
     ]
 
+    const dragscrollActive = window.innerWidth >= breakpoints.md
+
     return {
       assetsPath,
-      cards
+      cards,
+      dragscrollActive
     }
   }
 })
@@ -182,7 +186,8 @@ h3 {
   &s {
     display: flex;
     justify-content: center;
-    overflow-x: hidden;
+
+    @include hide-scrollbar;
 
     @include media-breakpoint-down(md) {
       padding: 0 25px;

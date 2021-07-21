@@ -19,7 +19,7 @@
       </div>
 
       <div
-        v-dragscroll.x.pass
+        v-dragscroll.x="{ active: dragscrollActive }"
         class="benefits-cards"
       >
         <div
@@ -44,7 +44,7 @@
 
     <div
       ref="cards"
-      v-dragscroll.x.pass
+      v-dragscroll.x="{ active: dragscrollActive }"
       class="cards"
     >
       <img
@@ -58,7 +58,7 @@
 
     <div
       ref="cardsMobile"
-      v-dragscroll.x.pass
+      v-dragscroll.x="{ active: dragscrollActive }"
       class="cards cards-mobile"
     >
       <img
@@ -81,6 +81,8 @@ interface Benefit {
   num: string
   item: string
 }
+
+const { md } = breakpoints
 
 export default defineComponent({
   setup () {
@@ -139,7 +141,7 @@ export default defineComponent({
     }
 
     onMounted(() => {
-      if (window.innerWidth >= breakpoints.md) {
+      if (window.innerWidth >= md) {
         window.addEventListener('scroll', onScroll)
       }
 
@@ -154,11 +156,14 @@ export default defineComponent({
 
     onUnmounted(() => window.removeEventListener('scroll', onScroll))
 
+    const dragscrollActive = window.innerWidth >= md
+
     return {
       assetsPath,
       benefits,
       cards,
-      cardsMobile
+      cardsMobile,
+      dragscrollActive
     }
   }
 })
@@ -189,9 +194,10 @@ export default defineComponent({
   &-cards {
     display: flex;
     margin-bottom: 117px;
-    overflow-x: hidden;
     user-select: none;
     padding: 0 calc(var(--p) / 3) 0 var(--p);
+
+    @include hide-scrollbar;
 
     @include media-breakpoint-down(md) {
       margin-bottom: 40px;
@@ -323,7 +329,8 @@ export default defineComponent({
 .cards {
   padding: 0 50px;
   display: flex;
-  overflow-x: hidden;
+
+  @include hide-scrollbar;
 
   @include media-breakpoint-down(md) {
     padding: 40px 50px;

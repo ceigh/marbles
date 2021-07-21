@@ -51,7 +51,7 @@
         <h3>Отзывы игроков</h3>
 
         <div
-          v-dragscroll.x.pass
+          v-dragscroll.x="{ active: dragscrollActive }"
           class="reviews-2"
         >
           <div
@@ -100,6 +100,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { breakpoints } from '../../const.json'
 
 interface Review1 {
   img: string
@@ -168,10 +169,13 @@ export default defineComponent({
       }
     ]
 
+    const dragscrollActive = window.innerWidth >= breakpoints.md
+
     return {
       assetsPath,
       reviews1,
-      reviews2
+      reviews2,
+      dragscrollActive
     }
   }
 })
@@ -385,8 +389,9 @@ export default defineComponent({
 
     &-2 {
       align-items: flex-start;
-      overflow-x: hidden;
       max-width: 100%;
+
+      @include hide-scrollbar;
 
       @include media-breakpoint-down(md) {
         padding-left: 25px;

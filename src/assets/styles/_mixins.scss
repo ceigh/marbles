@@ -66,3 +66,13 @@
     height: 38px;
   }
 }
+
+@mixin hide-scrollbar {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none; /* stylelint-disable-line property-no-unknown */
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
