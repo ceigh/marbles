@@ -43,6 +43,7 @@ input {
   line-height: 19px;
   outline: none;
   text-overflow: ellipsis;
+  appearance: none;
 
   @include transition;
 
