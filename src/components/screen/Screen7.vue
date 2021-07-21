@@ -64,7 +64,7 @@ export default defineComponent({
       border-top-left-radius: $corner;
       border-top-right-radius: $corner;
       position: absolute;
-      top: -1 * $corner;
+      top: #{-1 * $corner + 1px};
     }
   }
 
