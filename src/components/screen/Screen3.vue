@@ -5,11 +5,11 @@
       :key="i"
       class="shape"
       :class="`shape-${i + 2}`"
-      :src="`${assetsPath}img/shape-${i + 2}.svg#svgView(preserveAspectRatio(none))`"
+      :src="`${assetsPath}img/shape-${i + 2}.svg`"
       :alt="`фигура ${i + 2}`"
     >
     <img
-      :src="`${assetsPath}img/shape-5.svg#svgView(preserveAspectRatio(none))`"
+      :src="`${assetsPath}img/shape-5.svg`"
       alt="фигура 5"
       class="shape shape-5"
     >
@@ -205,6 +205,8 @@ export default defineComponent({
   position: absolute;
   width: 100%;
   z-index: -1;
+  object-fit: cover;
+  object-position: top;
 
   &-3 {
     display: none;
@@ -212,7 +214,7 @@ export default defineComponent({
 
   &-4 {
     @include media-breakpoint-down(md) {
-      height: 360px;
+      height: 400px;
     }
   }
 

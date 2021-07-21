@@ -14,7 +14,7 @@
       :key="i"
       class="shape"
       :class="`shape-${i}`"
-      :src="`${assetsPath}img/shape-${i}.svg#svgView(preserveAspectRatio(none))`"
+      :src="`${assetsPath}img/shape-${i}.svg`"
       :alt="`фигура ${i}`"
     >
 
@@ -138,6 +138,7 @@ h3 {
   position: absolute;
   z-index: -2;
   width: 100%;
+  object-fit: cover;
 
   &-1 {
     top: -95px;
