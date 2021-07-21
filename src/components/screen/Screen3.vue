@@ -399,6 +399,7 @@ export default defineComponent({
     &-2 {
       align-items: flex-start;
       max-width: 100%;
+      cursor: grab;
 
       @include hide-scrollbar;
 

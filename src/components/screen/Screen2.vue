@@ -195,6 +195,7 @@ h3 {
   &s {
     display: flex;
     justify-content: center;
+    user-select: none;
 
     @include hide-scrollbar;
 

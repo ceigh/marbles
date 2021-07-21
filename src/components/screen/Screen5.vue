@@ -200,6 +200,7 @@ export default defineComponent({
     display: flex;
     margin-bottom: 117px;
     user-select: none;
+    cursor: grab;
     padding: 0 calc(var(--p) / 3) 0 var(--p);
 
     @include hide-scrollbar;
@@ -334,6 +335,7 @@ export default defineComponent({
 .cards {
   padding: 0 50px;
   display: flex;
+  cursor: grab;
 
   @include hide-scrollbar;
 
