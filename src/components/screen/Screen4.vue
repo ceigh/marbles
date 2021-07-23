@@ -235,7 +235,7 @@ export default defineComponent({
         background-size: cover;
 
         @include media-breakpoint-down(md) {
-          height: 140px;
+          height: 360px;
           border-radius: 7px;
         }
 
