@@ -343,6 +343,7 @@ export default defineComponent({
       background: $text-main;
       border-radius: 18px;
       padding: 20px 15px 40px;
+      margin: 0 5px;
     }
 
     &-content {
