@@ -220,34 +220,34 @@ export default defineComponent({
 
 .col {
   &-1 {
+    --width: 442px;
+
     padding-top: 139px;
 
     @include media-breakpoint-down(md) {
-      padding: 40px 15px 30px;
+      --width: 100%;
+
+      padding: 40px 15px 0;
+      position: relative;
     }
 
     .img {
       &-current {
         height: 494px;
         width: 100%;
-        object-fit: cover;
         border-radius: 17px;
         background-size: cover;
 
         @include media-breakpoint-down(md) {
           height: 360px;
           border-radius: 7px;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
         }
 
         &-container {
-          --width: 442px;
-
           position: relative;
           width: var(--width);
-
-          @include media-breakpoint-down(md) {
-            --width: 100%;
-          }
 
           .tick {
             $spacing: 40px;
@@ -297,8 +297,20 @@ export default defineComponent({
       &-all {
         margin-top: 10px;
         display: flex;
-        width: var(--width);
+        width: calc(var(--width) - 30px);
         overflow-x: auto;
+
+        @include media-breakpoint-down(md) {
+          $p: 30px;
+
+          padding: $p;
+          margin: -1 * $p 0;
+          position: absolute;
+          bottom: 35px;
+          left: 15px;
+
+          @include hide-scrollbar;
+        }
 
         &-img {
           flex: 0 0 100px;
@@ -311,8 +323,14 @@ export default defineComponent({
           @include transition;
 
           @include media-breakpoint-down(md) {
-            flex-basis: 50px;
-            height: 39px;
+            $w: 70px;
+
+            flex-basis: $w;
+            width: $w;
+            height: 75px;
+            border: 4px solid $white;
+            box-shadow: 0 0 32px rgba($text-main, 0.5);
+            background: $white;
           }
 
           &:not(:last-child) {
@@ -330,6 +348,11 @@ export default defineComponent({
           &-current {
             opacity: 0.5 !important;
             cursor: initial;
+
+            @include media-breakpoint-down(md) {
+              opacity: 1 !important;
+              border-color: rgba($yellow, 0.7);
+            }
           }
         }
       }
@@ -340,10 +363,28 @@ export default defineComponent({
     padding-top: 86px;
 
     @include media-breakpoint-down(md) {
+      $corner: 18px;
+
       background: $text-main;
-      border-radius: 18px;
-      padding: 20px 15px 40px;
-      margin: 0 5px;
+      border-bottom-left-radius: $corner;
+      border-bottom-right-radius: $corner;
+      padding: 0 15px 40px;
+      margin: 0 15px;
+      position: relative;
+
+      &::before {
+        $h: 21px;
+
+        content: '';
+        height: $h;
+        width: 100%;
+        background: inherit;
+        border-top-left-radius: $corner;
+        border-top-right-radius: $corner;
+        position: absolute;
+        top: -1 * $h + 1px;
+        left: 0;
+      }
     }
 
     &-content {

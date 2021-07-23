@@ -202,6 +202,7 @@ h3 {
 
     @include media-breakpoint-down(md) {
       padding: 0 25px;
+      cursor: grab;
     }
 
     @include media-breakpoint-down(sm) {
