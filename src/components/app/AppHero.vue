@@ -3,6 +3,7 @@
     autoplay
     muted
     loop
+    playsinline
     :poster="`${assetsPath}img/photo.jpeg`"
   >
     <source
