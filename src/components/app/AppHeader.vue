@@ -22,7 +22,7 @@
 
         <a
           class="btn"
-          href="#order"
+          href="#game"
         >ЗАКАЗАТЬ</a>
       </div>
     </div>

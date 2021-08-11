@@ -69,7 +69,7 @@
       </div>
 
       <div
-        id="order"
+        id="game"
         class="col-2"
       >
         <div class="col-2-content">

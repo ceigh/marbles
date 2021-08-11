@@ -60,7 +60,7 @@ export default defineComponent({
         text: 'Политика конфиденциальности'
       },
       {
-        href: '#order',
+        href: '#game',
         text: 'Заказать игру'
       }
     ]
