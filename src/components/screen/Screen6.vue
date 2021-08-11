@@ -77,7 +77,7 @@ export default defineComponent({
     const email = ref('')
 
     function onSubmit (): void {
-      alert(email.value)
+      // alert(email.value)
     }
 
     const steps = [

@@ -74,7 +74,7 @@ export default defineComponent({
     }
 
     function buy (): void {
-      alert(quantity.value)
+      // alert(quantity.value)
     }
 
     return {
